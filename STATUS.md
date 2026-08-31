@@ -47,4 +47,4 @@ content.
 
 - Branch: `agent/literature-scaffold`
 - Validation: `make checks`
-- Commit: pending
+- Commit: `5da8ede` (`Initialize literature workflow and add The Basket's Display`)

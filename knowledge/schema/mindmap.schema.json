@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sutrastudies.local/schema/mindmap.schema.json",
+  "title": "Sutra Studies reviewed mind-map export",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project", "generated_at", "review_status", "concepts", "edges", "sources"],
+  "properties": {
+    "schema_version": {"const": "0.1.0"},
+    "project": {"const": "sutrastudies"},
+    "generated_at": {"type": ["string", "null"], "format": "date-time"},
+    "review_status": {"enum": ["draft", "reviewed", "released"]},
+    "concepts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/concept"}
+    },
+    "edges": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/edge"}
+    },
+    "sources": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/source"}
+    }
+  },
+  "$defs": {
+    "nonEmptyStrings": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "reviewState": {"enum": ["draft", "reviewed", "rejected"]},
+    "confidence": {"enum": ["high", "moderate", "low", "very_low", "not_assessed"]},
+    "term": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "language", "script", "transliteration", "notes"],
+      "properties": {
+        "text": {"type": "string", "minLength": 1},
+        "language": {"type": "string", "minLength": 1},
+        "script": {"type": ["string", "null"]},
+        "transliteration": {"type": ["string", "null"]},
+        "notes": {"type": ["string", "null"]}
+      }
+    },
+    "concept": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "plain_summary", "detail", "terms", "traditions", "claim_ids", "source_ids", "qualifications", "confidence", "review_status"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^concept-[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "label": {"type": "string", "minLength": 1},
+        "plain_summary": {"type": "string", "minLength": 1},
+        "detail": {"type": "string", "minLength": 1},
+        "terms": {"type": "array", "items": {"$ref": "#/$defs/term"}},
+        "traditions": {"$ref": "#/$defs/nonEmptyStrings"},
+        "claim_ids": {"$ref": "#/$defs/nonEmptyStrings"},
+        "source_ids": {"$ref": "#/$defs/nonEmptyStrings"},
+        "qualifications": {"$ref": "#/$defs/nonEmptyStrings"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "review_status": {"$ref": "#/$defs/reviewState"}
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "from", "to", "type", "label", "explanation", "traditions", "claim_ids", "source_ids", "qualifications", "confidence", "review_status"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^edge-[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "from": {"type": "string", "pattern": "^concept-"},
+        "to": {"type": "string", "pattern": "^concept-"},
+        "type": {"enum": ["part_of", "prerequisite_for", "supports", "cultivates", "counteracts", "conditioned_by", "contrasts_with", "interpreted_as", "textually_linked"]},
+        "label": {"type": "string", "minLength": 1},
+        "explanation": {"type": "string", "minLength": 1},
+        "traditions": {"$ref": "#/$defs/nonEmptyStrings"},
+        "claim_ids": {"$ref": "#/$defs/nonEmptyStrings"},
+        "source_ids": {"$ref": "#/$defs/nonEmptyStrings"},
+        "qualifications": {"$ref": "#/$defs/nonEmptyStrings"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "review_status": {"$ref": "#/$defs/reviewState"}
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "citation", "locator", "access_level", "traditions", "license_or_use_note"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^S[0-9]{3,}$"},
+        "citation": {"type": "string", "minLength": 1},
+        "locator": {"type": "string", "minLength": 1},
+        "access_level": {"enum": ["full_text", "excerpt", "abstract", "metadata", "unavailable"]},
+        "traditions": {"$ref": "#/$defs/nonEmptyStrings"},
+        "license_or_use_note": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

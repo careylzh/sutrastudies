@@ -33,6 +33,10 @@
   {
    "role": "Chinese gloss (釋義)",
    "cite": "Modern Chinese rendering of the same meaning, prepared for this viewer; the Taishō line above it is a phonetic transliteration, not a translation."
+  },
+  {
+   "role": "Recitation text (cross-reference)",
+   "cite": "The received 84-line Chinese recitation text (漢傳八十四句) as sung in Imee Ooi's (黃慧音) 大悲咒, album The Great Compassion Mantra (YouTube v7HioXeNCM8). The video itself could not be opened from the build environment; the text is the standard liturgical edition that rendition follows. Shown beneath a phrase only where it differs from the Taishō."
   }
  ],
  "lines": [
@@ -43,7 +47,8 @@
    "zh": "南無喝囉怛那哆囉夜㖿",
    "sa": "namo ratna-trayāya",
    "en": "Adoration to the Triple Gem.",
-   "zh_gloss": "禮敬三寶。"
+   "zh_gloss": "禮敬三寶。",
+   "zh_lit": "南無喝囉怚那哆囉夜耶"
   },
   {
    "n": 2,
@@ -52,7 +57,8 @@
    "zh": "南無阿唎㖿",
    "sa": "namo āryā-",
    "en": "Adoration to the noble",
-   "zh_gloss": "禮敬聖"
+   "zh_gloss": "禮敬聖",
+   "zh_lit": "南無阿唎耶"
   },
   {
    "n": 3,
@@ -61,7 +67,8 @@
    "zh": "婆盧羯帝爍鉢囉㖿",
    "sa": "-valokiteśvarāya",
    "en": "Avalokiteśvara,",
-   "zh_gloss": "觀自在（觀世音），"
+   "zh_gloss": "觀自在（觀世音），",
+   "zh_lit": "婆盧羯帝爍鉢囉耶"
   },
   {
    "n": 4,
@@ -70,7 +77,8 @@
    "zh": "菩提薩跢婆㖿",
    "sa": "bodhisattvāya",
    "en": "the bodhisattva,",
-   "zh_gloss": "菩薩，"
+   "zh_gloss": "菩薩，",
+   "zh_lit": "菩提薩埵婆耶"
   },
   {
    "n": 5,
@@ -79,7 +87,8 @@
    "zh": "摩訶薩跢婆㖿",
    "sa": "mahāsattvāya",
    "en": "the great being,",
-   "zh_gloss": "大士（摩訶薩），"
+   "zh_gloss": "大士（摩訶薩），",
+   "zh_lit": "摩訶薩埵婆耶"
   },
   {
    "n": 6,
@@ -88,7 +97,8 @@
    "zh": "摩訶迦盧尼迦㖿",
    "sa": "mahākāruṇikāya",
    "en": "the greatly compassionate one.",
-   "zh_gloss": "大悲者。"
+   "zh_gloss": "大悲者。",
+   "zh_lit": "摩訶迦盧尼迦耶"
   },
   {
    "n": 7,
@@ -98,7 +108,8 @@
    "sa": "oṃ",
    "en": "Oṃ.",
    "zh_gloss": "唵。",
-   "note_zh": "上聲"
+   "note_zh": "上聲",
+   "zh_lit": "唵"
   },
   {
    "n": 8,
@@ -107,7 +118,8 @@
    "zh": "薩皤囉罰曳",
    "sa": "sarva-bhayeṣu",
    "en": "In all dangers",
-   "zh_gloss": "於一切怖畏之中"
+   "zh_gloss": "於一切怖畏之中",
+   "zh_lit": "薩皤囉罰曳"
   },
   {
    "n": 9,
@@ -116,7 +128,8 @@
    "zh": "數怛那怛寫",
    "sa": "trāṇa-karāya tasya",
    "en": "to the one who gives protection; to him",
-   "zh_gloss": "作救護者；於彼"
+   "zh_gloss": "作救護者；於彼",
+   "zh_lit": "數怚那怚寫"
   },
   {
    "n": 10,
@@ -125,7 +138,8 @@
    "zh": "南無悉吉利埵伊蒙阿唎㖿",
    "sa": "namaskṛtvā imaṃ āryā-",
    "en": "having paid homage, this [hymn] of the noble",
-   "zh_gloss": "禮敬之後，此聖"
+   "zh_gloss": "禮敬之後，此聖",
+   "zh_lit": "南無悉吉栗埵伊蒙阿唎耶"
   },
   {
    "n": 11,
@@ -134,7 +148,8 @@
    "zh": "婆盧吉帝室佛囉㘄馱婆",
    "sa": "-valokiteśvara-stavanaṃ",
    "en": "Avalokiteśvara, the praise",
-   "zh_gloss": "觀自在之讚頌，"
+   "zh_gloss": "觀自在之讚頌，",
+   "zh_lit": "婆盧吉帝室佛囉楞馱婆"
   },
   {
    "n": 12,
@@ -143,7 +158,8 @@
    "zh": "南無那囉謹墀",
    "sa": "Nīlakaṇṭha-nāma",
    "en": "called Nīlakaṇṭha (the Blue-Necked One).",
-   "zh_gloss": "名為青頸（尼羅建他）。"
+   "zh_gloss": "名為青頸（尼羅建他）。",
+   "zh_lit": "南無那囉謹墀"
   },
   {
    "n": 13,
@@ -153,7 +169,8 @@
    "sa": "hṛdayaṃ vartayiṣyāmi",
    "en": "I shall recite the heart [dhāraṇī],",
    "zh_gloss": "我今宣說此心咒，",
-   "note_zh": "羊鳴音"
+   "note_zh": "羊鳴音",
+   "zh_lit": "醯利摩訶皤哆沙咩"
   },
   {
    "n": 14,
@@ -162,7 +179,8 @@
    "zh": "薩婆阿他豆輸朋",
    "sa": "sarvārtha-sādhanaṃ śubhaṃ",
    "en": "which fulfils all aims and is auspicious,",
-   "zh_gloss": "能成就一切義利、清淨吉祥，"
+   "zh_gloss": "能成就一切義利、清淨吉祥，",
+   "zh_lit": "薩婆阿他豆輸朋"
   },
   {
    "n": 15,
@@ -171,7 +189,8 @@
    "zh": "阿逝孕",
    "sa": "ajeyaṃ",
    "en": "invincible,",
-   "zh_gloss": "無能勝者，"
+   "zh_gloss": "無能勝者，",
+   "zh_lit": "阿逝孕"
   },
   {
    "n": 16,
@@ -180,7 +199,8 @@
    "zh": "薩婆薩哆那摩婆伽",
    "sa": "sarva-bhūtānāṃ",
    "en": "for all beings,",
-   "zh_gloss": "於一切眾生，"
+   "zh_gloss": "於一切眾生，",
+   "zh_lit": "薩婆薩哆那摩婆薩哆那摩婆伽"
   },
   {
    "n": 17,
@@ -189,7 +209,8 @@
    "zh": "摩罰特豆",
    "sa": "bhava-mārga-viśodhakam",
    "en": "and which purifies the path of existence.",
-   "zh_gloss": "能淨除生死之道。"
+   "zh_gloss": "能淨除生死之道。",
+   "zh_lit": "摩罰特豆"
   },
   {
    "n": 18,
@@ -198,7 +219,8 @@
    "zh": "怛姪他",
    "sa": "tadyathā",
    "en": "Thus:",
-   "zh_gloss": "即說咒曰："
+   "zh_gloss": "即說咒曰：",
+   "zh_lit": "怚姪他"
   },
   {
    "n": 19,
@@ -207,7 +229,8 @@
    "zh": "唵阿婆盧醯",
    "sa": "oṃ āloke (āloka-mati)",
    "en": "Oṃ. O Effulgence (Light),",
-   "zh_gloss": "唵，光明者，"
+   "zh_gloss": "唵，光明者，",
+   "zh_lit": "唵阿婆盧醯"
   },
   {
    "n": 20,
@@ -216,7 +239,8 @@
    "zh": "盧迦帝",
    "sa": "lokāti-",
    "en": "world-",
-   "zh_gloss": "超越世間"
+   "zh_gloss": "超越世間",
+   "zh_lit": "盧迦帝"
   },
   {
    "n": 21,
@@ -225,7 +249,8 @@
    "zh": "迦羅帝",
    "sa": "-krānte",
    "en": "transcending one,",
-   "zh_gloss": "者，"
+   "zh_gloss": "者，",
+   "zh_lit": "迦羅帝"
   },
   {
    "n": 22,
@@ -234,7 +259,8 @@
    "zh": "夷醯唎",
    "sa": "ehi Hare",
    "en": "come, O Hari,",
-   "zh_gloss": "來吧，訶利（獅子尊），"
+   "zh_gloss": "來吧，訶利（獅子尊），",
+   "zh_lit": "夷醯唎"
   },
   {
    "n": 23,
@@ -243,7 +269,8 @@
    "zh": "摩訶菩提薩埵",
    "sa": "mahābodhisattva",
    "en": "great bodhisattva.",
-   "zh_gloss": "大菩薩。"
+   "zh_gloss": "大菩薩。",
+   "zh_lit": "摩訶菩提薩埵"
   },
   {
    "n": 24,
@@ -252,7 +279,8 @@
    "zh": "薩婆薩婆",
    "sa": "sarpa sarpa",
    "en": "Descend, descend.",
-   "zh_gloss": "降臨，降臨。"
+   "zh_gloss": "降臨，降臨。",
+   "zh_lit": "薩婆薩婆"
   },
   {
    "n": 25,
@@ -261,7 +289,8 @@
    "zh": "摩羅摩羅",
    "sa": "smara smara",
    "en": "Remember, remember",
-   "zh_gloss": "憶念，憶念"
+   "zh_gloss": "憶念，憶念",
+   "zh_lit": "摩囉摩囉"
   },
   {
    "n": 26,
@@ -270,7 +299,8 @@
    "zh": "摩醯摩醯唎馱孕",
    "sa": "mama hṛdayam",
    "en": "my heart [dhāraṇī].",
-   "zh_gloss": "我之心咒。"
+   "zh_gloss": "我之心咒。",
+   "zh_lit": "摩醯摩醯唎馱孕"
   },
   {
    "n": 27,
@@ -279,7 +309,8 @@
    "zh": "俱盧俱盧羯懞",
    "sa": "kuru kuru karma",
    "en": "Accomplish, accomplish the work.",
-   "zh_gloss": "作為，作為此事業。"
+   "zh_gloss": "作為，作為此事業。",
+   "zh_lit": "俱盧俱盧羯懞"
   },
   {
    "n": 28,
@@ -288,7 +319,8 @@
    "zh": "度盧度盧罰闍耶帝",
    "sa": "dhuru dhuru vijayate",
    "en": "Hold fast, hold fast, O Victor,",
-   "zh_gloss": "堅持，堅持，勝利者，"
+   "zh_gloss": "堅持，堅持，勝利者，",
+   "zh_lit": "度盧度盧罰闍耶帝"
   },
   {
    "n": 29,
@@ -297,7 +329,8 @@
    "zh": "摩訶罰闍耶帝",
    "sa": "mahāvijayate",
    "en": "O great Victor.",
-   "zh_gloss": "大勝利者。"
+   "zh_gloss": "大勝利者。",
+   "zh_lit": "摩訶罰闍耶帝"
   },
   {
    "n": 30,
@@ -306,7 +339,8 @@
    "zh": "陀羅陀羅",
    "sa": "dhara dhara",
    "en": "Hold on, hold on,",
-   "zh_gloss": "護持，護持，"
+   "zh_gloss": "護持，護持，",
+   "zh_lit": "陀囉陀囉"
   },
   {
    "n": 31,
@@ -315,7 +349,8 @@
    "zh": "地利尼",
    "sa": "dharaṇī-",
    "en": "O Lord of",
-   "zh_gloss": "大地"
+   "zh_gloss": "大地",
+   "zh_lit": "地唎尼"
   },
   {
    "n": 32,
@@ -324,7 +359,8 @@
    "zh": "室佛囉耶",
    "sa": "-īśvara",
    "en": "the Earth.",
-   "zh_gloss": "之主。"
+   "zh_gloss": "之主。",
+   "zh_lit": "室佛囉耶"
   },
   {
    "n": 33,
@@ -333,7 +369,8 @@
    "zh": "遮羅遮羅",
    "sa": "cala cala",
    "en": "Move, move,",
-   "zh_gloss": "動起，動起，"
+   "zh_gloss": "動起，動起，",
+   "zh_lit": "遮囉遮囉"
   },
   {
    "n": 34,
@@ -342,7 +379,8 @@
    "zh": "摩摩罰摩囉",
    "sa": "mama vimala-",
    "en": "O my immaculate",
-   "zh_gloss": "我無垢之"
+   "zh_gloss": "我無垢之",
+   "zh_lit": "麼麼罰摩囉"
   },
   {
    "n": 35,
@@ -351,7 +389,8 @@
    "zh": "穆帝囇",
    "sa": "-mūrtte re",
    "en": "image.",
-   "zh_gloss": "尊像。"
+   "zh_gloss": "尊像。",
+   "zh_lit": "穆帝隸"
   },
   {
    "n": 36,
@@ -360,7 +399,8 @@
    "zh": "伊醯移醯",
    "sa": "ehy ehi",
    "en": "Come, come,",
-   "zh_gloss": "來吧，來吧，"
+   "zh_gloss": "來吧，來吧，",
+   "zh_lit": "伊醯伊醯"
   },
   {
    "n": 37,
@@ -369,7 +409,8 @@
    "zh": "室那室那",
    "sa": "kṛṣṇa-sarpa-",
    "en": "Thou with the black serpent",
-   "zh_gloss": "以黑蛇"
+   "zh_gloss": "以黑蛇",
+   "zh_lit": "室那室那"
   },
   {
    "n": 38,
@@ -378,7 +419,8 @@
    "zh": "阿囉嘇佛囉舍利",
    "sa": "-opavīta",
    "en": "as Thy sacred thread.",
-   "zh_gloss": "為聖線者。"
+   "zh_gloss": "為聖線者。",
+   "zh_lit": "阿囉嘇佛囉舍利"
   },
   {
    "n": 39,
@@ -387,7 +429,8 @@
    "zh": "罰沙罰嘇",
    "sa": "viṣa viṣaṃ",
    "en": "Every poison",
-   "zh_gloss": "一切毒害"
+   "zh_gloss": "一切毒害",
+   "zh_lit": "罰沙罰嘇"
   },
   {
    "n": 40,
@@ -396,7 +439,8 @@
    "zh": "佛羅舍耶",
    "sa": "praṇāśaya",
    "en": "destroy.",
-   "zh_gloss": "悉皆除滅。"
+   "zh_gloss": "悉皆除滅。",
+   "zh_lit": "佛囉舍耶"
   },
   {
    "n": 41,
@@ -405,7 +449,8 @@
    "zh": "呼嚧呼嚧摩囉",
    "sa": "hulu hulu Malla",
    "en": "Quick, quick, O Strong One.",
-   "zh_gloss": "速疾，速疾，大力者。"
+   "zh_gloss": "速疾，速疾，大力者。",
+   "zh_lit": "呼嚧呼嚧摩囉"
   },
   {
    "n": 42,
@@ -414,7 +459,8 @@
    "zh": "呼嚧呼嚧醯利",
    "sa": "hulu hulu Hare",
    "en": "Quick, quick, O Hari.",
-   "zh_gloss": "速疾，速疾，訶利。"
+   "zh_gloss": "速疾，速疾，訶利。",
+   "zh_lit": "呼嚧呼嚧醯利"
   },
   {
    "n": 43,
@@ -423,7 +469,8 @@
    "zh": "娑囉娑囉",
    "sa": "sara sara",
    "en": "Descend, descend,",
-   "zh_gloss": "降下，降下，"
+   "zh_gloss": "降下，降下，",
+   "zh_lit": "娑囉娑囉"
   },
   {
    "n": 44,
@@ -432,7 +479,8 @@
    "zh": "悉利悉利",
    "sa": "siri siri",
    "en": "come down, come down,",
-   "zh_gloss": "來臨，來臨，"
+   "zh_gloss": "來臨，來臨，",
+   "zh_lit": "悉唎悉唎"
   },
   {
    "n": 45,
@@ -441,7 +489,8 @@
    "zh": "蘇嚧蘇嚧",
    "sa": "suru suru",
    "en": "condescend, condescend.",
-   "zh_gloss": "垂降，垂降。"
+   "zh_gloss": "垂降，垂降。",
+   "zh_lit": "蘇嚧蘇嚧"
   },
   {
    "n": 46,
@@ -450,7 +499,8 @@
    "zh": "菩提夜菩提夜",
    "sa": "bodhiya bodhiya",
    "en": "Being enlightened, being enlightened,",
-   "zh_gloss": "覺悟，覺悟，"
+   "zh_gloss": "覺悟，覺悟，",
+   "zh_lit": "菩提夜菩提夜"
   },
   {
    "n": 47,
@@ -459,7 +509,8 @@
    "zh": "菩馱夜菩馱夜",
    "sa": "bodhaya bodhaya",
    "en": "enlighten me, enlighten me,",
-   "zh_gloss": "令我覺悟，令我覺悟，"
+   "zh_gloss": "令我覺悟，令我覺悟，",
+   "zh_lit": "菩馱夜菩馱夜"
   },
   {
    "n": 48,
@@ -468,7 +519,8 @@
    "zh": "彌帝利夜",
    "sa": "maitreya",
    "en": "O merciful",
-   "zh_gloss": "慈愛的"
+   "zh_gloss": "慈愛的",
+   "zh_lit": "彌帝唎夜"
   },
   {
    "n": 49,
@@ -477,7 +529,8 @@
    "zh": "那囉謹墀",
    "sa": "Nīlakaṇṭha",
    "en": "Nīlakaṇṭha.",
-   "zh_gloss": "青頸者。"
+   "zh_gloss": "青頸者。",
+   "zh_lit": "那囉謹墀"
   },
   {
    "n": 50,
@@ -486,7 +539,8 @@
    "zh": "地唎瑟尼那",
    "sa": "darśanena",
    "en": "By appearing unto me",
-   "zh_gloss": "以示現尊容"
+   "zh_gloss": "以示現尊容",
+   "zh_lit": "地利瑟尼那"
   },
   {
    "n": 51,
@@ -495,7 +549,8 @@
    "zh": "波夜摩那",
    "sa": "prahlādaya manaḥ",
    "en": "gladden my heart.",
-   "zh_gloss": "令我心歡喜。"
+   "zh_gloss": "令我心歡喜。",
+   "zh_lit": "波夜摩那"
   },
   {
    "n": 52,
@@ -504,7 +559,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "Hail.",
-   "zh_gloss": "娑婆訶（成就圓滿）。"
+   "zh_gloss": "娑婆訶（成就圓滿）。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 53,
@@ -513,7 +569,8 @@
    "zh": "悉陀夜",
    "sa": "siddhāya",
    "en": "To the Accomplished One (Siddha),",
-   "zh_gloss": "於成就者，"
+   "zh_gloss": "於成就者，",
+   "zh_lit": "悉陀夜"
   },
   {
    "n": 54,
@@ -522,7 +579,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 55,
@@ -531,7 +589,8 @@
    "zh": "摩訶悉陀夜",
    "sa": "mahāsiddhāya",
    "en": "To the great Siddha,",
-   "zh_gloss": "於大成就者，"
+   "zh_gloss": "於大成就者，",
+   "zh_lit": "摩訶悉陀夜"
   },
   {
    "n": 56,
@@ -540,7 +599,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 57,
@@ -549,7 +609,8 @@
    "zh": "悉陀喻藝",
    "sa": "siddha-yoge-",
    "en": "To the Lord of",
-   "zh_gloss": "於成就瑜伽"
+   "zh_gloss": "於成就瑜伽",
+   "zh_lit": "悉陀喻藝"
   },
   {
    "n": 58,
@@ -558,7 +619,8 @@
    "zh": "室皤囉耶",
    "sa": "-śvarāya",
    "en": "accomplished yogins,",
-   "zh_gloss": "之自在者，"
+   "zh_gloss": "之自在者，",
+   "zh_lit": "室皤囉耶"
   },
   {
    "n": 59,
@@ -567,7 +629,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 60,
@@ -576,7 +639,8 @@
    "zh": "那囉謹墀",
    "sa": "Nīlakaṇṭhāya",
    "en": "To Nīlakaṇṭha,",
-   "zh_gloss": "於青頸者，"
+   "zh_gloss": "於青頸者，",
+   "zh_lit": "那囉謹墀"
   },
   {
    "n": 61,
@@ -585,7 +649,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 62,
@@ -594,7 +659,8 @@
    "zh": "摩囉那囉",
    "sa": "varāha-mukhāya",
    "en": "To the Boar-faced One,",
-   "zh_gloss": "於豬面者，"
+   "zh_gloss": "於豬面者，",
+   "zh_lit": "摩囉那囉"
   },
   {
    "n": 63,
@@ -603,7 +669,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 64,
@@ -612,7 +679,8 @@
    "zh": "悉囉僧阿穆佉耶",
    "sa": "narasiṃha-mukhāya",
    "en": "To the one with the face of Narasiṃha (the Man-Lion),",
-   "zh_gloss": "於人獅子面者，"
+   "zh_gloss": "於人獅子面者，",
+   "zh_lit": "悉囉僧阿穆佉耶"
   },
   {
    "n": 65,
@@ -621,7 +689,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 66,
@@ -630,7 +699,8 @@
    "zh": "娑婆摩訶阿悉陀夜",
    "sa": "padma-hastāya",
    "en": "To the one who holds a lotus in his hand,",
-   "zh_gloss": "於手持蓮花者，"
+   "zh_gloss": "於手持蓮花者，",
+   "zh_lit": "娑婆摩訶阿悉陀夜"
   },
   {
    "n": 67,
@@ -639,7 +709,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 68,
@@ -648,7 +719,8 @@
    "zh": "者吉囉阿悉陀夜",
    "sa": "cakra-hastāya",
    "en": "To the one who holds a discus (cakra) in his hand,",
-   "zh_gloss": "於手持法輪者，"
+   "zh_gloss": "於手持法輪者，",
+   "zh_lit": "者吉囉阿悉陀夜"
   },
   {
    "n": 69,
@@ -657,7 +729,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 70,
@@ -666,7 +739,8 @@
    "zh": "波陀摩羯悉哆夜",
    "sa": "padma-hastāya (?)",
    "en": "To the one who bears a lotus (?) in his hand,",
-   "zh_gloss": "於手持蓮花者（？），"
+   "zh_gloss": "於手持蓮花者（？），",
+   "zh_lit": "波陀摩羯悉陀夜"
   },
   {
    "n": 71,
@@ -675,7 +749,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 72,
@@ -684,7 +759,8 @@
    "zh": "那囉謹墀皤伽囉㖿",
    "sa": "Nīlakaṇṭha-vyāghrāya",
    "en": "To Nīlakaṇṭha the Tiger,",
-   "zh_gloss": "於青頸虎者，"
+   "zh_gloss": "於青頸虎者，",
+   "zh_lit": "那囉謹墀皤伽囉耶"
   },
   {
    "n": 73,
@@ -693,7 +769,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 74,
@@ -702,7 +779,8 @@
    "zh": "摩婆利勝羯囉夜",
    "sa": "Mahābali-Śaṅkarāya",
    "en": "To the mighty Śaṅkara,",
-   "zh_gloss": "於大力商羯羅（大自在），"
+   "zh_gloss": "於大力商羯羅（大自在），",
+   "zh_lit": "摩婆利勝羯囉夜"
   },
   {
    "n": 75,
@@ -711,7 +789,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 76,
@@ -720,7 +799,8 @@
    "zh": "南無喝囉怛那哆囉夜耶",
    "sa": "namo ratna-trayāya",
    "en": "Adoration to the Triple Gem.",
-   "zh_gloss": "禮敬三寶。"
+   "zh_gloss": "禮敬三寶。",
+   "zh_lit": "南無喝囉怚那哆囉夜耶"
   },
   {
    "n": 77,
@@ -729,7 +809,8 @@
    "zh": "南無阿唎㖿",
    "sa": "namaḥ āryā-",
    "en": "Adoration to the noble",
-   "zh_gloss": "禮敬聖"
+   "zh_gloss": "禮敬聖",
+   "zh_lit": "南無阿唎耶"
   },
   {
    "n": 78,
@@ -738,7 +819,8 @@
    "zh": "婆嚧吉帝",
    "sa": "-valokite-",
    "en": "Avalokite-",
-   "zh_gloss": "觀自在"
+   "zh_gloss": "觀自在",
+   "zh_lit": "婆嚧吉帝"
   },
   {
    "n": 79,
@@ -747,7 +829,8 @@
    "zh": "爍皤囉夜",
    "sa": "-śvarāya",
    "en": "-śvara,",
-   "zh_gloss": "者，"
+   "zh_gloss": "者，",
+   "zh_lit": "爍皤囉夜"
   },
   {
    "n": 80,
@@ -756,7 +839,8 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   },
   {
    "n": 81,
@@ -765,7 +849,8 @@
    "zh": "唵悉殿都曼哆囉鉢馱耶",
    "sa": "oṃ sidhyantu mantra-padāni",
    "en": "Oṃ. May the words of the mantra be accomplished,",
-   "zh_gloss": "唵，願此真言句悉皆成就，"
+   "zh_gloss": "唵，願此真言句悉皆成就，",
+   "zh_lit": "唵悉殿都　漫多囉　跋陀耶"
   },
   {
    "n": 82,
@@ -774,7 +859,13 @@
    "zh": "娑婆訶",
    "sa": "svāhā",
    "en": "hail.",
-   "zh_gloss": "娑婆訶。"
+   "zh_gloss": "娑婆訶。",
+   "zh_lit": "娑婆訶"
   }
- ]
+ ],
+ "recitation": {
+  "lines": 84,
+  "chars": 415,
+  "phrases_differing": 28
+ }
 }

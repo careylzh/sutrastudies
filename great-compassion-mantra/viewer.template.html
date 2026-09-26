@@ -62,6 +62,9 @@
   .en-line{font-family:var(--sa);font-style:italic;font-size:clamp(17px,3.6vw,21px);line-height:1.45;color:var(--ink);max-width:34em;margin:0 auto;text-wrap:balance}
   .gl-line{font-family:var(--zh);font-size:clamp(14px,3vw,16px);line-height:1.7;color:var(--muted);letter-spacing:.06em;text-wrap:balance}
   .rule{width:38px;height:1px;background:var(--hair);margin:0 auto}
+  .lit-line{font-family:var(--zh);font-size:clamp(14px,3.2vw,17px);letter-spacing:.12em;color:var(--muted);margin-top:-6px}
+  .lit-line .k{font-family:var(--ui);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-right:10px;color:var(--faint)}
+  .lit-line mark{background:none;color:var(--seal)}
   .lang-hidden{display:none}
 
   /* completion card */
@@ -162,7 +165,7 @@
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ---------- state ----------
-  var state = { i: 0, seen: 0, show: { sa:true, en:true, gl:true }, done:false };
+  var state = { i: 0, seen: 0, show: { sa:true, en:true, gl:true, lit:true }, done:false };
   try {
     var saved = JSON.parse(localStorage.getItem('nilakantha-viewer') || 'null');
     if (saved && typeof saved.i === 'number') { state.i = Math.min(Math.max(saved.i,0), N-1); state.seen = saved.seen||state.i; state.show = Object.assign(state.show, saved.show||{}); }
@@ -187,6 +190,7 @@
   var longest = L.reduce(function(a,l){ return cjkChars(l.zh).length > cjkChars(a.zh).length ? l : a; }, L[0]);
   var shortest = L.reduce(function(a,l){ return cjkChars(l.zh).length < cjkChars(a.zh).length ? l : a; }, L[0]);
   var refs = new Set(L.map(function(l){return l.ref;})).size;
+  var litDiff = L.filter(function(l){ return l.zh_lit && l.zh_lit.replace(/　/g,'') !== l.zh; }).length;
   var S = DATA.sutra;
   var fmt = function(n){ return n.toLocaleString('en-US'); };
 
@@ -201,6 +205,7 @@
     var h = '';
     h += '<div class="eyebrow"><span class="num">第' + toZhNum(l.n) + '句</span><span class="ref">Taishō ' + esc(l.ref.replace('T20n1060_p','20.1060.')) + '</span>' + (l.lit !== String(l.n) ? '<span class="ref">liturgical ' + esc(l.lit) + '</span>' : '') + '</div>';
     h += '<div class="zh-line" lang="zh-Hant">' + esc(l.zh) + (l.note_zh ? '<span class="g">(' + esc(l.note_zh) + ')</span>' : '') + '</div>';
+    if (l.zh_lit && l.zh_lit.replace(/　/g,'') !== l.zh) h += '<div class="lit-line' + (state.show.lit?'':' lang-hidden') + '" lang="zh-Hant"><span class="k">As sung</span>' + markDiff(l.zh, l.zh_lit) + '</div>';
     h += '<div class="rule"></div>';
     h += '<div class="sa-line' + (state.show.sa?'':' lang-hidden') + '" lang="sa-Latn">' + esc(l.sa) + '</div>';
     h += '<div class="en-line' + (state.show.en?'':' lang-hidden') + '" lang="en">' + esc(l.en) + '</div>';
@@ -215,6 +220,16 @@
       '<div class="sa-line" lang="sa-Latn">oṃ sidhyantu mantra-padāni svāhā</div>' +
       '<p>You have read the whole dhāraṇī as Bhagavaddharma set it down in the seventh century. Tap to begin again from the first phrase, or open the menu for statistics.</p>' +
       '</div>';
+  }
+  function markDiff(a, b){
+    // LCS over characters; characters of b not matched to a are highlighted
+    var A=Array.from(a), B=Array.from(b), m=A.length, n=B.length, dp=[];
+    for (var i=0;i<=m;i++){ dp.push(new Array(n+1).fill(0)); }
+    for (i=m-1;i>=0;i--) for (var j=n-1;j>=0;j--) dp[i][j] = A[i]===B[j] ? dp[i+1][j+1]+1 : Math.max(dp[i+1][j], dp[i][j+1]);
+    var out='', x=0, y=0;
+    while (x<m && y<n){ if (A[x]===B[y]){ out+=esc(B[y]); x++; y++; } else if (dp[x+1][y] >= dp[x][y+1]) x++; else { out += B[y]==='　' ? '　' : '<mark>'+esc(B[y])+'</mark>'; y++; } }
+    while (y<n){ out += B[y]==='　' ? '　' : '<mark>'+esc(B[y])+'</mark>'; y++; }
+    return out;
   }
   function toZhNum(n){
     var d='〇一二三四五六七八九';
@@ -290,6 +305,15 @@
       row('Taishō lines the dhāraṇī occupies', refs, S.dharani_span) +
       '</dl></section>';
 
+    var R = DATA.recitation || {};
+    h += '<section class="sec"><h3>Against the recitation text</h3><dl>' +
+      row('Lines as sung', R.lines || 84, 'received 84-line text, Imee Ooi rendition') +
+      row('Characters as sung', fmt(R.chars || 0), 'Taishō has ' + fmt(zhChars.length)) +
+      row('Phrases that differ', litDiff, 'mostly homophonous variant characters') +
+      row('Phrases identical', N - litDiff) +
+      row('Characters added in phrase 16', 5, '薩哆那摩婆 repeated') +
+      '</dl></section>';
+
     h += '<section class="sec"><h3>The sutra it belongs to</h3><dl>' +
       row('Taishō pages', 6, 'vol. 20, pp. 106–111') +
       row('Page registers (a · b · c)', S.page_count_taisho, S.pages_taisho) +
@@ -302,6 +326,7 @@
       '<label><span>Sanskrit reconstruction</span><input type="checkbox" id="tg-sa"' + (state.show.sa?' checked':'') + '></label>' +
       '<label><span>English gloss</span><input type="checkbox" id="tg-en"' + (state.show.en?' checked':'') + '></label>' +
       '<label><span>Chinese gloss 釋義</span><input type="checkbox" id="tg-gl"' + (state.show.gl?' checked':'') + '></label>' +
+      '<label><span>Recitation variant where it differs</span><input type="checkbox" id="tg-lit"' + (state.show.lit?' checked':'') + '></label>' +
       '</div></section>';
 
     h += '<section class="sec"><h3>Jump to a phrase</h3><div class="jump">';
@@ -316,7 +341,7 @@
     dbody.innerHTML = h;
     document.getElementById('restartBtn').onclick = function(){ closeDrawer(); jump(0); };
     document.getElementById('lastBtn').onclick = function(){ closeDrawer(); jump(N-1); };
-    ['sa','en','gl'].forEach(function(key){
+    ['sa','en','gl','lit'].forEach(function(key){
       document.getElementById('tg-'+key).onchange = function(e){ state.show[key]=e.target.checked; persist(); paint(); };
     });
     Array.prototype.forEach.call(dbody.querySelectorAll('.jump button'), function(b){

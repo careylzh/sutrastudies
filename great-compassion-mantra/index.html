@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--ARTIFACT-START-->
+<title>Nīlakaṇṭha Dhāraṇī</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#ECEAF1; --surface:#F8F7FB; --ink:#1E1A2B; --muted:#6D6880; --faint:#A9A4B8;
+    --hair:rgba(30,26,43,.14); --seal:#A8352A; --gold:#8E7230; --scrim:rgba(30,26,43,.42);
+    --shadow:0 24px 60px rgba(30,26,43,.18);
+    --zh:"Noto Serif TC","Songti TC","Songti SC","PMingLiU","SimSun","Noto Serif CJK TC",serif;
+    --sa:"Gentium Book Plus","Gentium Plus","Charis SIL","Georgia","Times New Roman",serif;
+    --ui:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#12101A; --surface:#1B1826; --ink:#EDE9F5; --muted:#9A94AD; --faint:#5F5A72;
+      --hair:rgba(237,233,245,.14); --seal:#D65A4C; --gold:#D2B064; --scrim:rgba(0,0,0,.55);
+      --shadow:0 24px 60px rgba(0,0,0,.5); color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12101A; --surface:#1B1826; --ink:#EDE9F5; --muted:#9A94AD; --faint:#5F5A72;
+    --hair:rgba(237,233,245,.14); --seal:#D65A4C; --gold:#D2B064; --scrim:rgba(0,0,0,.55);
+    --shadow:0 24px 60px rgba(0,0,0,.5); color-scheme:dark;
+  }
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);font-size:15px;line-height:1.5;-webkit-tap-highlight-color:transparent;overflow:hidden}
+  *{box-sizing:border-box}
+  button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+  button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--seal);outline-offset:3px;border-radius:4px}
+
+  .app{height:100%;display:flex;flex-direction:column;padding-inline:16px}
+
+  /* top bar */
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px 10px;min-height:56px}
+  .menu{width:44px;height:44px;margin-left:-10px;display:grid;place-items:center;border-radius:8px}
+  .menu:hover{background:var(--hair)}
+  .menu span{display:block;width:22px;height:2px;background:var(--ink);border-radius:1px;box-shadow:0 -7px 0 var(--ink),0 7px 0 var(--ink)}
+  .bar-title{flex:1;text-align:center;min-width:0}
+  .bar-title .zh{font-family:var(--zh);font-size:15px;letter-spacing:.14em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bar-title .sa{font-family:var(--sa);font-size:12.5px;color:var(--muted);letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .counter{font-variant-numeric:tabular-nums;color:var(--muted);font-size:13px;min-width:56px;text-align:right;letter-spacing:.04em}
+  .counter b{color:var(--ink);font-weight:500}
+
+  /* stage */
+  .stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;-webkit-user-select:none}
+  .card{width:100%;max-width:640px;text-align:center;display:flex;flex-direction:column;gap:clamp(14px,3vh,26px);padding-block:8px;transition:opacity .26s ease, transform .26s ease}
+  .card.is-out{opacity:0;transform:translateY(-6px)}
+  .card.is-in{opacity:0;transform:translateY(8px)}
+  .eyebrow{display:flex;justify-content:center;align-items:baseline;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+  .eyebrow .num{font-family:var(--zh);color:var(--seal);letter-spacing:.2em;font-size:13px;text-transform:none}
+  .eyebrow .ref{font-variant-numeric:tabular-nums;letter-spacing:.06em}
+  .zh-line{font-family:var(--zh);font-weight:400;font-size:clamp(30px,7.6vw,50px);line-height:1.25;letter-spacing:.1em;text-wrap:balance;word-break:keep-all;overflow-wrap:anywhere}
+  .zh-line .g{color:var(--faint);font-size:.42em;letter-spacing:.1em;vertical-align:.35em;margin-left:.2em}
+  .sa-line{font-family:var(--sa);font-size:clamp(21px,4.6vw,29px);line-height:1.3;color:var(--gold);text-wrap:balance}
+  .en-line{font-family:var(--sa);font-style:italic;font-size:clamp(17px,3.6vw,21px);line-height:1.45;color:var(--ink);max-width:34em;margin:0 auto;text-wrap:balance}
+  .gl-line{font-family:var(--zh);font-size:clamp(14px,3vw,16px);line-height:1.7;color:var(--muted);letter-spacing:.06em;text-wrap:balance}
+  .rule{width:38px;height:1px;background:var(--hair);margin:0 auto}
+  .lang-hidden{display:none}
+
+  /* completion card */
+  .done .zh-line{font-size:clamp(26px,6vw,40px)}
+  .done p{margin:0;color:var(--muted);max-width:32em;margin-inline:auto}
+
+  /* bottom */
+  .foot{display:flex;align-items:center;gap:14px;padding-block:10px 16px;color:var(--muted);font-size:12.5px}
+  .back{width:44px;height:36px;display:grid;place-items:center;border-radius:8px;color:var(--muted);flex:none}
+  .back:hover{background:var(--hair);color:var(--ink)}
+  .back:disabled{opacity:.3;cursor:default;background:none}
+  .track{flex:1;display:flex;gap:2px;height:14px;align-items:center}
+  .track i{flex:1;height:3px;background:var(--hair);border-radius:1px;transition:background .3s}
+  .track i.on{background:var(--seal)}
+  .track i.cur{background:var(--ink);height:7px}
+  .hint{flex:none;letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+  @media (max-width:420px){.hint{display:none}}
+
+  /* drawer */
+  .scrim{position:fixed;inset:0;background:var(--scrim);opacity:0;pointer-events:none;transition:opacity .28s}
+  .drawer{position:fixed;top:0;bottom:0;left:0;width:min(400px,92vw);background:var(--surface);color:var(--ink);box-shadow:var(--shadow);transform:translateX(-104%);transition:transform .32s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+  body.open .scrim{opacity:1;pointer-events:auto}
+  body.open .drawer{transform:none}
+  .d-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px 12px;border-bottom:1px solid var(--hair)}
+  .d-head h2{margin:0;font-family:var(--sa);font-weight:400;font-size:20px;letter-spacing:.01em}
+  .d-head h2 small{display:block;font-family:var(--ui);font-size:11.5px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:2px}
+  .close{width:40px;height:40px;display:grid;place-items:center;border-radius:8px;font-size:22px;line-height:1;color:var(--muted)}
+  .close:hover{background:var(--hair);color:var(--ink)}
+  .d-body{overflow-y:auto;padding:6px 20px 24px;flex:1}
+  .sec{padding-block:14px;border-bottom:1px solid var(--hair)}
+  .sec:last-child{border-bottom:0}
+  .sec h3{margin:0 0 8px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500}
+  dl{margin:0;display:grid;grid-template-columns:1fr auto;column-gap:16px;row-gap:6px;align-items:baseline}
+  dt{color:var(--ink)}
+  dt small{display:block;color:var(--muted);font-size:12px}
+  dd{margin:0;font-variant-numeric:tabular-nums;text-align:right;font-size:17px;font-family:var(--sa);white-space:nowrap}
+  dd small{font-family:var(--ui);font-size:12px;color:var(--muted);margin-left:4px}
+  .toggles{display:flex;flex-direction:column;gap:8px}
+  .toggles label{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .toggles input{accent-color:var(--seal);width:18px;height:18px;margin:0}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .btn{padding:8px 14px;border:1px solid var(--hair);border-radius:6px;font-size:13.5px;letter-spacing:.02em}
+  .btn:hover{border-color:var(--ink)}
+  .btn.primary{background:var(--seal);color:#fff;border-color:var(--seal)}
+  .jump{display:grid;grid-template-columns:repeat(auto-fill,minmax(34px,1fr));gap:4px}
+  .jump button{height:32px;border:1px solid var(--hair);border-radius:4px;font-size:12.5px;font-variant-numeric:tabular-nums;color:var(--muted)}
+  .jump button.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+  .jump button.seen{color:var(--ink);border-color:var(--seal)}
+  .jump button:hover{border-color:var(--ink)}
+  .src{font-size:13px;color:var(--muted);margin:0 0 10px;line-height:1.5}
+  .src b{color:var(--ink);font-weight:500;display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+  .src a{color:var(--seal)}
+
+  @media (prefers-reduced-motion: reduce){
+    .card,.drawer,.scrim,.track i{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+  <header class="bar">
+    <button class="menu" id="menuBtn" aria-label="Open statistics and settings" aria-expanded="false" aria-controls="drawer"><span></span></button>
+    <div class="bar-title">
+      <div class="zh" id="barZh">大悲心陀羅尼</div>
+      <div class="sa" id="barSa">Nīlakaṇṭha Dhāraṇī · T. 1060</div>
+    </div>
+    <div class="counter" id="counter"><b>1</b> / 82</div>
+  </header>
+
+  <main class="stage" id="stage" role="button" tabindex="0" aria-label="Tap to advance to the next line">
+    <div class="card" id="card" aria-live="polite"></div>
+  </main>
+
+  <footer class="foot">
+    <button class="back" id="backBtn" aria-label="Previous line" disabled>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 5 8l5 5"/></svg>
+    </button>
+    <div class="track" id="track" aria-hidden="true"></div>
+    <div class="hint" id="hint">Tap to continue</div>
+  </footer>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-labelledby="drawerTitle">
+  <div class="d-head">
+    <h2 id="drawerTitle">Statistics<small>千手千眼大悲心陀羅尼 · Taishō vol. 20, no. 1060</small></h2>
+    <button class="close" id="closeBtn" aria-label="Close">×</button>
+  </div>
+  <div class="d-body" id="dbody"></div>
+</aside>
+
+<script type="application/json" id="dharani-data">{"title":{"zh":"千手千眼觀世音菩薩廣大圓滿無礙大悲心陀羅尼","sa":"Nīlakaṇṭha Dhāraṇī (Mahākaruṇā Dhāraṇī)","en":"Great Compassion Mantra"},"sutra":{"canon":"Taishō Shinshū Daizōkyō","vol":20,"no":1060,"title_zh":"千手千眼觀世音菩薩廣大圓滿無礙大悲心陀羅尼經","translator_zh":"唐 伽梵達摩譯","translator_en":"Bhagavaddharma (Tang dynasty, c. 650–660 CE)","pages_taisho":"0106a–0111c","page_count_taisho":18,"lines_taisho":536,"cjk_chars_body":8437,"dharani_span":"0107b25–0107c25"},"sources":[{"role":"Chinese text (source of truth)","cite":"CBETA TEI P5 XML edition of Taishō vol. 20, no. 1060 (file T/T20/T20n1060.xml, header dated 2025-01-30), github.com/cbeta-org/xml-p5. Phrase division and numbering (1–82) are the Taishō's own inline notes."},{"role":"Sanskrit reconstruction","cite":"Lokesh Chandra, The Thousand-armed Avalokiteśvara, vol. 1 (New Delhi: Abhinav / IGNCA, 1988), reconstruction of Bhagavaddharma's version, as reproduced line-aligned in the Wikipedia article ‘Nīlakaṇṭha Dhāraṇī’. A ‘(?)’ marks a reading Chandra himself left uncertain."},{"role":"English gloss","cite":"After the English rendering that accompanies Chandra's reconstruction in the same article, lightly regularised so each Taishō phrase carries its own fragment."},{"role":"Chinese gloss (釋義)","cite":"Modern Chinese rendering of the same meaning, prepared for this viewer; the Taishō line above it is a phonetic transliteration, not a translation."}],"lines":[{"n":1,"lit":"1","ref":"T20n1060_p0107b25","zh":"南無喝囉怛那哆囉夜㖿","sa":"namo ratna-trayāya","en":"Adoration to the Triple Gem.","zh_gloss":"禮敬三寶。"},{"n":2,"lit":"2","ref":"T20n1060_p0107b25","zh":"南無阿唎㖿","sa":"namo āryā-","en":"Adoration to the noble","zh_gloss":"禮敬聖"},{"n":3,"lit":"3","ref":"T20n1060_p0107b25","zh":"婆盧羯帝爍鉢囉㖿","sa":"-valokiteśvarāya","en":"Avalokiteśvara,","zh_gloss":"觀自在（觀世音），"},{"n":4,"lit":"4","ref":"T20n1060_p0107b26","zh":"菩提薩跢婆㖿","sa":"bodhisattvāya","en":"the bodhisattva,","zh_gloss":"菩薩，"},{"n":5,"lit":"5","ref":"T20n1060_p0107b26","zh":"摩訶薩跢婆㖿","sa":"mahāsattvāya","en":"the great being,","zh_gloss":"大士（摩訶薩），"},{"n":6,"lit":"6","ref":"T20n1060_p0107b27","zh":"摩訶迦盧尼迦㖿","sa":"mahākāruṇikāya","en":"the greatly compassionate one.","zh_gloss":"大悲者。"},{"n":7,"lit":"7","ref":"T20n1060_p0107b27","zh":"唵","sa":"oṃ","en":"Oṃ.","zh_gloss":"唵。","note_zh":"上聲"},{"n":8,"lit":"8","ref":"T20n1060_p0107b27","zh":"薩皤囉罰曳","sa":"sarva-bhayeṣu","en":"In all dangers","zh_gloss":"於一切怖畏之中"},{"n":9,"lit":"9","ref":"T20n1060_p0107b28","zh":"數怛那怛寫","sa":"trāṇa-karāya tasya","en":"to the one who gives protection; to him","zh_gloss":"作救護者；於彼"},{"n":10,"lit":"10","ref":"T20n1060_p0107b28","zh":"南無悉吉利埵伊蒙阿唎㖿","sa":"namaskṛtvā imaṃ āryā-","en":"having paid homage, this [hymn] of the noble","zh_gloss":"禮敬之後，此聖"},{"n":11,"lit":"11","ref":"T20n1060_p0107b29","zh":"婆盧吉帝室佛囉㘄馱婆","sa":"-valokiteśvara-stavanaṃ","en":"Avalokiteśvara, the praise","zh_gloss":"觀自在之讚頌，"},{"n":12,"lit":"12","ref":"T20n1060_p0107b29","zh":"南無那囉謹墀","sa":"Nīlakaṇṭha-nāma","en":"called Nīlakaṇṭha (the Blue-Necked One).","zh_gloss":"名為青頸（尼羅建他）。"},{"n":13,"lit":"13","ref":"T20n1060_p0107c01","zh":"醯唎摩訶皤哆沙咩","sa":"hṛdayaṃ vartayiṣyāmi","en":"I shall recite the heart [dhāraṇī],","zh_gloss":"我今宣說此心咒，","note_zh":"羊鳴音"},{"n":14,"lit":"14","ref":"T20n1060_p0107c01","zh":"薩婆阿他豆輸朋","sa":"sarvārtha-sādhanaṃ śubhaṃ","en":"which fulfils all aims and is auspicious,","zh_gloss":"能成就一切義利、清淨吉祥，"},{"n":15,"lit":"15","ref":"T20n1060_p0107c02","zh":"阿逝孕","sa":"ajeyaṃ","en":"invincible,","zh_gloss":"無能勝者，"},{"n":16,"lit":"16","ref":"T20n1060_p0107c02","zh":"薩婆薩哆那摩婆伽","sa":"sarva-bhūtānāṃ","en":"for all beings,","zh_gloss":"於一切眾生，"},{"n":17,"lit":"17","ref":"T20n1060_p0107c03","zh":"摩罰特豆","sa":"bhava-mārga-viśodhakam","en":"and which purifies the path of existence.","zh_gloss":"能淨除生死之道。"},{"n":18,"lit":"18","ref":"T20n1060_p0107c03","zh":"怛姪他","sa":"tadyathā","en":"Thus:","zh_gloss":"即說咒曰："},{"n":19,"lit":"19","ref":"T20n1060_p0107c03","zh":"唵阿婆盧醯","sa":"oṃ āloke (āloka-mati)","en":"Oṃ. O Effulgence (Light),","zh_gloss":"唵，光明者，"},{"n":20,"lit":"20","ref":"T20n1060_p0107c04","zh":"盧迦帝","sa":"lokāti-","en":"world-","zh_gloss":"超越世間"},{"n":21,"lit":"21","ref":"T20n1060_p0107c04","zh":"迦羅帝","sa":"-krānte","en":"transcending one,","zh_gloss":"者，"},{"n":22,"lit":"22","ref":"T20n1060_p0107c04","zh":"夷醯唎","sa":"ehi Hare","en":"come, O Hari,","zh_gloss":"來吧，訶利（獅子尊），"},{"n":23,"lit":"23","ref":"T20n1060_p0107c04","zh":"摩訶菩提薩埵","sa":"mahābodhisattva","en":"great bodhisattva.","zh_gloss":"大菩薩。"},{"n":24,"lit":"24","ref":"T20n1060_p0107c05","zh":"薩婆薩婆","sa":"sarpa sarpa","en":"Descend, descend.","zh_gloss":"降臨，降臨。"},{"n":25,"lit":"25","ref":"T20n1060_p0107c05","zh":"摩羅摩羅","sa":"smara smara","en":"Remember, remember","zh_gloss":"憶念，憶念"},{"n":26,"lit":"26","ref":"T20n1060_p0107c05","zh":"摩醯摩醯唎馱孕","sa":"mama hṛdayam","en":"my heart [dhāraṇī].","zh_gloss":"我之心咒。"},{"n":27,"lit":"27","ref":"T20n1060_p0107c06","zh":"俱盧俱盧羯懞","sa":"kuru kuru karma","en":"Accomplish, accomplish the work.","zh_gloss":"作為，作為此事業。"},{"n":28,"lit":"28","ref":"T20n1060_p0107c06","zh":"度盧度盧罰闍耶帝","sa":"dhuru dhuru vijayate","en":"Hold fast, hold fast, O Victor,","zh_gloss":"堅持，堅持，勝利者，"},{"n":29,"lit":"29","ref":"T20n1060_p0107c07","zh":"摩訶罰闍耶帝","sa":"mahāvijayate","en":"O great Victor.","zh_gloss":"大勝利者。"},{"n":30,"lit":"30","ref":"T20n1060_p0107c07","zh":"陀羅陀羅","sa":"dhara dhara","en":"Hold on, hold on,","zh_gloss":"護持，護持，"},{"n":31,"lit":"31","ref":"T20n1060_p0107c08","zh":"地利尼","sa":"dharaṇī-","en":"O Lord of","zh_gloss":"大地"},{"n":32,"lit":"32","ref":"T20n1060_p0107c08","zh":"室佛囉耶","sa":"-īśvara","en":"the Earth.","zh_gloss":"之主。"},{"n":33,"lit":"33","ref":"T20n1060_p0107c08","zh":"遮羅遮羅","sa":"cala cala","en":"Move, move,","zh_gloss":"動起，動起，"},{"n":34,"lit":"34","ref":"T20n1060_p0107c08","zh":"摩摩罰摩囉","sa":"mama vimala-","en":"O my immaculate","zh_gloss":"我無垢之"},{"n":35,"lit":"35","ref":"T20n1060_p0107c09","zh":"穆帝囇","sa":"-mūrtte re","en":"image.","zh_gloss":"尊像。"},{"n":36,"lit":"36","ref":"T20n1060_p0107c09","zh":"伊醯移醯","sa":"ehy ehi","en":"Come, come,","zh_gloss":"來吧，來吧，"},{"n":37,"lit":"37","ref":"T20n1060_p0107c09","zh":"室那室那","sa":"kṛṣṇa-sarpa-","en":"Thou with the black serpent","zh_gloss":"以黑蛇"},{"n":38,"lit":"38","ref":"T20n1060_p0107c10","zh":"阿囉嘇佛囉舍利","sa":"-opavīta","en":"as Thy sacred thread.","zh_gloss":"為聖線者。"},{"n":39,"lit":"39","ref":"T20n1060_p0107c10","zh":"罰沙罰嘇","sa":"viṣa viṣaṃ","en":"Every poison","zh_gloss":"一切毒害"},{"n":40,"lit":"40","ref":"T20n1060_p0107c10","zh":"佛羅舍耶","sa":"praṇāśaya","en":"destroy.","zh_gloss":"悉皆除滅。"},{"n":41,"lit":"41","ref":"T20n1060_p0107c11","zh":"呼嚧呼嚧摩囉","sa":"hulu hulu Malla","en":"Quick, quick, O Strong One.","zh_gloss":"速疾，速疾，大力者。"},{"n":42,"lit":"42","ref":"T20n1060_p0107c11","zh":"呼嚧呼嚧醯利","sa":"hulu hulu Hare","en":"Quick, quick, O Hari.","zh_gloss":"速疾，速疾，訶利。"},{"n":43,"lit":"43","ref":"T20n1060_p0107c12","zh":"娑囉娑囉","sa":"sara sara","en":"Descend, descend,","zh_gloss":"降下，降下，"},{"n":44,"lit":"44","ref":"T20n1060_p0107c12","zh":"悉利悉利","sa":"siri siri","en":"come down, come down,","zh_gloss":"來臨，來臨，"},{"n":45,"lit":"45","ref":"T20n1060_p0107c12","zh":"蘇嚧蘇嚧","sa":"suru suru","en":"condescend, condescend.","zh_gloss":"垂降，垂降。"},{"n":46,"lit":"46","ref":"T20n1060_p0107c13","zh":"菩提夜菩提夜","sa":"bodhiya bodhiya","en":"Being enlightened, being enlightened,","zh_gloss":"覺悟，覺悟，"},{"n":47,"lit":"47","ref":"T20n1060_p0107c13","zh":"菩馱夜菩馱夜","sa":"bodhaya bodhaya","en":"enlighten me, enlighten me,","zh_gloss":"令我覺悟，令我覺悟，"},{"n":48,"lit":"48","ref":"T20n1060_p0107c13","zh":"彌帝利夜","sa":"maitreya","en":"O merciful","zh_gloss":"慈愛的"},{"n":49,"lit":"49","ref":"T20n1060_p0107c14","zh":"那囉謹墀","sa":"Nīlakaṇṭha","en":"Nīlakaṇṭha.","zh_gloss":"青頸者。"},{"n":50,"lit":"50","ref":"T20n1060_p0107c14","zh":"地唎瑟尼那","sa":"darśanena","en":"By appearing unto me","zh_gloss":"以示現尊容"},{"n":51,"lit":"51","ref":"T20n1060_p0107c14","zh":"波夜摩那","sa":"prahlādaya manaḥ","en":"gladden my heart.","zh_gloss":"令我心歡喜。"},{"n":52,"lit":"52","ref":"T20n1060_p0107c15","zh":"娑婆訶","sa":"svāhā","en":"Hail.","zh_gloss":"娑婆訶（成就圓滿）。"},{"n":53,"lit":"53","ref":"T20n1060_p0107c15","zh":"悉陀夜","sa":"siddhāya","en":"To the Accomplished One (Siddha),","zh_gloss":"於成就者，"},{"n":54,"lit":"54","ref":"T20n1060_p0107c15","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"},{"n":55,"lit":"55","ref":"T20n1060_p0107c15","zh":"摩訶悉陀夜","sa":"mahāsiddhāya","en":"To the great Siddha,","zh_gloss":"於大成就者，"},{"n":56,"lit":"56","ref":"T20n1060_p0107c16","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"},{"n":57,"lit":"57","ref":"T20n1060_p0107c16","zh":"悉陀喻藝","sa":"siddha-yoge-","en":"To the Lord of","zh_gloss":"於成就瑜伽"},{"n":58,"lit":"58","ref":"T20n1060_p0107c16","zh":"室皤囉耶","sa":"-śvarāya","en":"accomplished yogins,","zh_gloss":"之自在者，"},{"n":59,"lit":"59","ref":"T20n1060_p0107c17","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"},{"n":60,"lit":"60","ref":"T20n1060_p0107c17","zh":"那囉謹墀","sa":"Nīlakaṇṭhāya","en":"To Nīlakaṇṭha,","zh_gloss":"於青頸者，"},{"n":61,"lit":"61","ref":"T20n1060_p0107c17","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"},{"n":62,"lit":"62","ref":"T20n1060_p0107c18","zh":"摩囉那囉","sa":"varāha-mukhāya","en":"To the Boar-faced One,","zh_gloss":"於豬面者，"},{"n":63,"lit":"63","ref":"T20n1060_p0107c18","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"},{"n":64,"lit":"64","ref":"T20n1060_p0107c18","zh":"悉囉僧阿穆佉耶","sa":"narasiṃha-mukhāya","en":"To the one with the face of Narasiṃha (the Man-Lion),","zh_gloss":"於人獅子面者，"},{"n":65,"lit":"65","ref":"T20n1060_p0107c19","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"},{"n":66,"lit":"66","ref":"T20n1060_p0107c19","zh":"娑婆摩訶阿悉陀夜","sa":"padma-hastāya","en":"To the one who holds a lotus in his hand,","zh_gloss":"於手持蓮花者，"},{"n":67,"lit":"67","ref":"T20n1060_p0107c19","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"},{"n":68,"lit":"68","ref":"T20n1060_p0107c20","zh":"者吉囉阿悉陀夜","sa":"cakra-hastāya","en":"To the one who holds a discus (cakra) in his hand,","zh_gloss":"於手持法輪者，"},{"n":69,"lit":"69","ref":"T20n1060_p0107c20","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"},{"n":70,"lit":"70","ref":"T20n1060_p0107c20","zh":"波陀摩羯悉哆夜","sa":"padma-hastāya (?)","en":"To the one who bears a lotus (?) in his hand,","zh_gloss":"於手持蓮花者（？），"},{"n":71,"lit":"71","ref":"T20n1060_p0107c21","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"},{"n":72,"lit":"72","ref":"T20n1060_p0107c21","zh":"那囉謹墀皤伽囉㖿","sa":"Nīlakaṇṭha-vyāghrāya","en":"To Nīlakaṇṭha the Tiger,","zh_gloss":"於青頸虎者，"},{"n":73,"lit":"73","ref":"T20n1060_p0107c22","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"},{"n":74,"lit":"74","ref":"T20n1060_p0107c22","zh":"摩婆利勝羯囉夜","sa":"Mahābali-Śaṅkarāya","en":"To the mighty Śaṅkara,","zh_gloss":"於大力商羯羅（大自在），"},{"n":75,"lit":"75","ref":"T20n1060_p0107c22","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"},{"n":76,"lit":"76","ref":"T20n1060_p0107c23","zh":"南無喝囉怛那哆囉夜耶","sa":"namo ratna-trayāya","en":"Adoration to the Triple Gem.","zh_gloss":"禮敬三寶。"},{"n":77,"lit":"77","ref":"T20n1060_p0107c23","zh":"南無阿唎㖿","sa":"namaḥ āryā-","en":"Adoration to the noble","zh_gloss":"禮敬聖"},{"n":78,"lit":"78","ref":"T20n1060_p0107c24","zh":"婆嚧吉帝","sa":"-valokite-","en":"Avalokite-","zh_gloss":"觀自在"},{"n":79,"lit":"79","ref":"T20n1060_p0107c24","zh":"爍皤囉夜","sa":"-śvarāya","en":"-śvara,","zh_gloss":"者，"},{"n":80,"lit":"80","ref":"T20n1060_p0107c24","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"},{"n":81,"lit":"81–83","ref":"T20n1060_p0107c25","zh":"唵悉殿都曼哆囉鉢馱耶","sa":"oṃ sidhyantu mantra-padāni","en":"Oṃ. May the words of the mantra be accomplished,","zh_gloss":"唵，願此真言句悉皆成就，"},{"n":82,"lit":"84","ref":"T20n1060_p0107c25","zh":"娑婆訶","sa":"svāhā","en":"hail.","zh_gloss":"娑婆訶。"}]}</script>
+<script>
+(function(){
+  var DATA = JSON.parse(document.getElementById('dharani-data').textContent);
+  var L = DATA.lines, N = L.length;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- state ----------
+  var state = { i: 0, seen: 0, show: { sa:true, en:true, gl:true }, done:false };
+  try {
+    var saved = JSON.parse(localStorage.getItem('nilakantha-viewer') || 'null');
+    if (saved && typeof saved.i === 'number') { state.i = Math.min(Math.max(saved.i,0), N-1); state.seen = saved.seen||state.i; state.show = Object.assign(state.show, saved.show||{}); }
+  } catch(e){}
+  if (window.claude && window.claude.hot && window.claude.hot.data && typeof window.claude.hot.data.i === 'number') state = Object.assign(state, window.claude.hot.data);
+  if (window.claude && window.claude.hot && window.claude.hot.snapshot) window.claude.hot.snapshot(function(){ return state; });
+  function persist(){ try { localStorage.setItem('nilakantha-viewer', JSON.stringify({i:state.i, seen:state.seen, show:state.show})); } catch(e){} }
+
+  // ---------- statistics ----------
+  var isCJK = function(ch){ var c = ch.codePointAt(0); return (c>=0x3400&&c<=0x9FFF)||(c>=0x20000&&c<=0x2FFFF); };
+  function cjkChars(s){ return Array.from(s).filter(isCJK); }
+  function words(s){ return s.replace(/\([^)]*\)/g,' ').replace(/[\[\]().,;:?!’‘“”]/g,' ').split(/\s+/).filter(function(w){ return /[A-Za-zÀ-ɏḀ-ỿ]/.test(w); }); }
+  function joinSa(){ return L.map(function(l){return l.sa;}).join(' ').replace(/-\s+-/g,''); }
+  var zhAll = L.map(function(l){return l.zh;}).join('');
+  var zhChars = cjkChars(zhAll);
+  var zhUnique = new Set(zhChars).size;
+  var glChars = cjkChars(L.map(function(l){return l.zh_gloss;}).join(''));
+  var saWords = words(joinSa());
+  var enWords = L.reduce(function(a,l){ return a + words(l.en).length; }, 0);
+  var svaha = L.filter(function(l){ return /^svāhā$/i.test(l.sa.trim()); }).length;
+  var nila = L.filter(function(l){ return /nīlakaṇṭh/i.test(l.sa); }).length;
+  var longest = L.reduce(function(a,l){ return cjkChars(l.zh).length > cjkChars(a.zh).length ? l : a; }, L[0]);
+  var shortest = L.reduce(function(a,l){ return cjkChars(l.zh).length < cjkChars(a.zh).length ? l : a; }, L[0]);
+  var refs = new Set(L.map(function(l){return l.ref;})).size;
+  var S = DATA.sutra;
+  var fmt = function(n){ return n.toLocaleString('en-US'); };
+
+  // ---------- render helpers ----------
+  var card = document.getElementById('card'), counter = document.getElementById('counter'), track = document.getElementById('track'), backBtn = document.getElementById('backBtn'), hint = document.getElementById('hint');
+  var esc = function(s){ return s.replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+
+  for (var k=0;k<N;k++){ var t=document.createElement('i'); track.appendChild(t); }
+  var ticks = track.children;
+
+  function lineHTML(l){
+    var h = '';
+    h += '<div class="eyebrow"><span class="num">第' + toZhNum(l.n) + '句</span><span class="ref">Taishō ' + esc(l.ref.replace('T20n1060_p','20.1060.')) + '</span>' + (l.lit !== String(l.n) ? '<span class="ref">liturgical ' + esc(l.lit) + '</span>' : '') + '</div>';
+    h += '<div class="zh-line" lang="zh-Hant">' + esc(l.zh) + (l.note_zh ? '<span class="g">(' + esc(l.note_zh) + ')</span>' : '') + '</div>';
+    h += '<div class="rule"></div>';
+    h += '<div class="sa-line' + (state.show.sa?'':' lang-hidden') + '" lang="sa-Latn">' + esc(l.sa) + '</div>';
+    h += '<div class="en-line' + (state.show.en?'':' lang-hidden') + '" lang="en">' + esc(l.en) + '</div>';
+    h += '<div class="gl-line' + (state.show.gl?'':' lang-hidden') + '" lang="zh-Hant">' + esc(l.zh_gloss) + '</div>';
+    return h;
+  }
+  function doneHTML(){
+    return '<div class="done">' +
+      '<div class="eyebrow"><span class="num">圓滿</span><span class="ref">' + N + ' phrases · ' + fmt(zhChars.length) + ' characters</span></div>' +
+      '<div class="zh-line" lang="zh-Hant">唵悉殿都　曼哆囉鉢馱耶　娑婆訶</div>' +
+      '<div class="rule"></div>' +
+      '<div class="sa-line" lang="sa-Latn">oṃ sidhyantu mantra-padāni svāhā</div>' +
+      '<p>You have read the whole dhāraṇī as Bhagavaddharma set it down in the seventh century. Tap to begin again from the first phrase, or open the menu for statistics.</p>' +
+      '</div>';
+  }
+  function toZhNum(n){
+    var d='〇一二三四五六七八九';
+    if (n<10) return d[n];
+    var tens=Math.floor(n/10), ones=n%10;
+    return (tens>1?d[tens]:'') + '十' + (ones?d[ones]:'');
+  }
+
+  function paint(){
+    card.innerHTML = state.done ? doneHTML() : lineHTML(L[state.i]);
+    counter.innerHTML = state.done ? '<b>' + N + '</b> / ' + N : '<b>' + (state.i+1) + '</b> / ' + N;
+    for (var k=0;k<N;k++){ ticks[k].className = state.done ? 'on' : (k<state.i ? 'on' : (k===state.i ? 'cur' : '')); }
+    backBtn.disabled = state.i===0 && !state.done;
+    hint.textContent = state.done ? 'Tap to start over' : (state.i===N-1 ? 'Tap to finish' : 'Tap to continue');
+    if (document.body.classList.contains('open')) renderDrawer();
+  }
+
+  var busy=false;
+  function transition(update){
+    if (busy) return; busy=true;
+    if (reduce){ update(); paint(); persist(); busy=false; return; }
+    card.classList.add('is-out');
+    setTimeout(function(){
+      update(); paint(); persist();
+      card.classList.remove('is-out'); card.classList.add('is-in');
+      // force reflow so the fade-in animates from the offset state
+      void card.offsetWidth;
+      card.classList.remove('is-in');
+      setTimeout(function(){ busy=false; }, 200);
+    }, 240);
+  }
+  function next(){
+    transition(function(){
+      if (state.done){ state.done=false; state.i=0; return; }
+      if (state.i >= N-1){ state.done=true; state.seen=N; return; }
+      state.i++; state.seen=Math.max(state.seen,state.i);
+    });
+  }
+  function prev(){
+    if (state.i===0 && !state.done) return;
+    transition(function(){ if (state.done){ state.done=false; state.i=N-1; } else state.i--; });
+  }
+  function jump(i){ transition(function(){ state.done=false; state.i=i; state.seen=Math.max(state.seen,i); }); }
+
+  // ---------- drawer ----------
+  var dbody = document.getElementById('dbody');
+  function row(label, value, sub, unit){
+    return '<dt>' + label + (sub?'<small>'+sub+'</small>':'') + '</dt><dd>' + value + (unit?'<small>'+unit+'</small>':'') + '</dd>';
+  }
+  function renderDrawer(){
+    var pos = state.done ? N : state.i+1;
+    var pct = Math.round(pos/N*100);
+    var h = '';
+    h += '<section class="sec"><h3>Reading</h3><dl>' +
+      row('Current phrase', pos + ' / ' + N) +
+      row('Progress', pct, null, '%') +
+      row('Furthest phrase reached', Math.max(state.seen, pos)) +
+      row('Phrases remaining', N - pos) +
+      '</dl><div class="btnrow"><button class="btn primary" id="restartBtn">Start over</button><button class="btn" id="lastBtn">Go to last phrase</button></div></section>';
+
+    h += '<section class="sec"><h3>The dhāraṇī</h3><dl>' +
+      row('Phrases in the Taishō text', N, 'numbered 一 to 八十二 in the canon itself') +
+      row('Lines in the recitation edition', 84, 'phrase 81 is chanted as three lines') +
+      row('Chinese characters', fmt(zhChars.length), 'phonetic transliteration, Bhagavaddharma') +
+      row('Distinct Chinese characters', fmt(zhUnique)) +
+      row('Sanskrit words', fmt(saWords.length), 'Chandra’s reconstruction, hyphen-joined words counted once') +
+      row('English words', fmt(enWords), 'gloss') +
+      row('Chinese gloss characters', fmt(glChars.length), '釋義') +
+      row('Occurrences of svāhā', svaha, '娑婆訶') +
+      row('Phrases naming Nīlakaṇṭha', nila, '那囉謹墀') +
+      row('Longest phrase', cjkChars(longest.zh).length, '第' + toZhNum(longest.n) + '句 ' + esc(longest.zh), 'chars') +
+      row('Shortest phrase', cjkChars(shortest.zh).length, '第' + toZhNum(shortest.n) + '句 ' + esc(shortest.zh), 'char') +
+      row('Taishō lines the dhāraṇī occupies', refs, S.dharani_span) +
+      '</dl></section>';
+
+    h += '<section class="sec"><h3>The sutra it belongs to</h3><dl>' +
+      row('Taishō pages', 6, 'vol. 20, pp. 106–111') +
+      row('Page registers (a · b · c)', S.page_count_taisho, S.pages_taisho) +
+      row('Taishō lines', fmt(S.lines_taisho)) +
+      row('Chinese characters in the sutra', fmt(S.cjk_chars_body), 'body text, notes excluded') +
+      row('Share taken by the dhāraṇī', (zhChars.length / S.cjk_chars_body * 100).toFixed(1), null, '%') +
+      '</dl></section>';
+
+    h += '<section class="sec"><h3>Show</h3><div class="toggles">' +
+      '<label><span>Sanskrit reconstruction</span><input type="checkbox" id="tg-sa"' + (state.show.sa?' checked':'') + '></label>' +
+      '<label><span>English gloss</span><input type="checkbox" id="tg-en"' + (state.show.en?' checked':'') + '></label>' +
+      '<label><span>Chinese gloss 釋義</span><input type="checkbox" id="tg-gl"' + (state.show.gl?' checked':'') + '></label>' +
+      '</div></section>';
+
+    h += '<section class="sec"><h3>Jump to a phrase</h3><div class="jump">';
+    for (var k=0;k<N;k++){ h += '<button data-j="' + k + '" class="' + (k===state.i && !state.done ? 'on' : (k<state.seen ? 'seen' : '')) + '" aria-label="Phrase ' + (k+1) + '">' + (k+1) + '</button>'; }
+    h += '</div></section>';
+
+    h += '<section class="sec"><h3>Sources</h3>';
+    DATA.sources.forEach(function(s){ h += '<p class="src"><b>' + esc(s.role) + '</b>' + esc(s.cite) + '</p>'; });
+    h += '<p class="src">Translator of the Chinese text: ' + esc(S.translator_zh) + ' · ' + esc(S.translator_en) + '.</p>';
+    h += '</section>';
+
+    dbody.innerHTML = h;
+    document.getElementById('restartBtn').onclick = function(){ closeDrawer(); jump(0); };
+    document.getElementById('lastBtn').onclick = function(){ closeDrawer(); jump(N-1); };
+    ['sa','en','gl'].forEach(function(key){
+      document.getElementById('tg-'+key).onchange = function(e){ state.show[key]=e.target.checked; persist(); paint(); };
+    });
+    Array.prototype.forEach.call(dbody.querySelectorAll('.jump button'), function(b){
+      b.onclick = function(){ var j = +b.getAttribute('data-j'); closeDrawer(); jump(j); };
+    });
+  }
+
+  var menuBtn = document.getElementById('menuBtn'), drawer = document.getElementById('drawer'), scrim = document.getElementById('scrim');
+  function openDrawer(){ renderDrawer(); document.body.classList.add('open'); drawer.setAttribute('aria-hidden','false'); menuBtn.setAttribute('aria-expanded','true'); }
+  function closeDrawer(){ document.body.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false'); }
+  menuBtn.addEventListener('click', function(e){ e.stopPropagation(); document.body.classList.contains('open') ? closeDrawer() : openDrawer(); });
+  document.getElementById('closeBtn').addEventListener('click', closeDrawer);
+  scrim.addEventListener('click', closeDrawer);
+
+  // ---------- input ----------
+  var stage = document.getElementById('stage');
+  stage.addEventListener('click', function(){ if (!document.body.classList.contains('open')) next(); });
+  backBtn.addEventListener('click', function(e){ e.stopPropagation(); prev(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key==='Escape'){ closeDrawer(); return; }
+    if (document.body.classList.contains('open')) return;
+    if (e.key==='ArrowRight' || e.key==='ArrowDown' || e.key===' ' || e.key==='Enter'){ e.preventDefault(); next(); }
+    else if (e.key==='ArrowLeft' || e.key==='ArrowUp' || e.key==='Backspace'){ e.preventDefault(); prev(); }
+    else if (e.key==='m' || e.key==='M'){ openDrawer(); }
+  });
+
+  paint();
+})();
+</script>
+<!--ARTIFACT-END-->
+</body>
+</html>

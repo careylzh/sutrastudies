@@ -118,6 +118,32 @@
   .src b{color:var(--ink);font-weight:500;display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
   .src a{color:var(--seal)}
 
+  /* floating view toggle (icon only) */
+  .fab{position:fixed;right:16px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:50px;height:50px;border-radius:50%;background:var(--surface);border:1px solid var(--hair);box-shadow:0 8px 24px rgba(30,26,43,.16);display:grid;place-items:center;color:var(--ink);z-index:5;transition:transform .2s, background .2s}
+  .fab:hover{transform:translateY(-1px)}
+  .fab:active{transform:scale(.96)}
+  .fab svg{width:22px;height:22px;display:block}
+  .fab .ic-full{display:block}.fab .ic-card{display:none}
+  body.mode-full .fab .ic-full{display:none}body.mode-full .fab .ic-card{display:block}
+  .foot{padding-right:62px}
+  .scrim{z-index:10}.drawer{z-index:11}
+
+  /* full-text view */
+  .full{display:none;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-block:6px 96px;-webkit-overflow-scrolling:touch}
+  body.mode-full .stage,body.mode-full .foot{display:none}
+  body.mode-full .full{display:block}
+  .full ol{list-style:none;margin:0 auto;padding:0;max-width:640px}
+  .full li{padding:18px 4px 20px;border-bottom:1px solid var(--hair);cursor:pointer;display:flex;flex-direction:column;gap:6px}
+  .full li:hover{background:var(--hair)}
+  .full li.cur{box-shadow:inset 3px 0 0 var(--seal);padding-left:14px}
+  .full .eyebrow{justify-content:flex-start;gap:12px}
+  .full .zh-line{font-size:clamp(22px,5.4vw,30px);text-align:left;letter-spacing:.08em;line-height:1.35}
+  .full .lit-line{font-size:14px;margin-top:0;text-align:left}
+  .full .sa-line{font-size:clamp(17px,4vw,20px);text-align:left}
+  .full .en-line{font-size:clamp(15px,3.4vw,17px);text-align:left;margin:0;max-width:none}
+  .full .gl-line{font-size:14px;text-align:left}
+  .full .end{color:var(--muted);text-align:center;font-size:13px;padding:28px 0 8px;letter-spacing:.06em}
+
   @media (prefers-reduced-motion: reduce){
     .card,.drawer,.scrim,.track i{transition:none}
   }
@@ -139,6 +165,8 @@
     <div class="card" id="card" aria-live="polite"></div>
   </main>
 
+  <section class="full" id="full" aria-label="Full text of the dhāraṇī"><ol id="fullList"></ol><div class="end" id="fullEnd"></div></section>
+
   <footer class="foot">
     <button class="back" id="backBtn" aria-label="Previous line" disabled>
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 5 8l5 5"/></svg>
@@ -148,6 +176,10 @@
   </footer>
 </div>
 
+<button class="fab" id="fab" aria-label="Show the full text" aria-pressed="false" title="Full text">
+  <svg class="ic-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h11M4 18h7"/></svg>
+  <svg class="ic-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M9 12h6"/></svg>
+</button>
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-labelledby="drawerTitle">
   <div class="d-head">
@@ -165,14 +197,14 @@
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ---------- state ----------
-  var state = { i: 0, seen: 0, show: { sa:true, en:true, gl:true, lit:true }, done:false };
+  var state = { i: 0, seen: 0, show: { sa:true, en:true, gl:true, lit:true }, done:false, full:false };
   try {
     var saved = JSON.parse(localStorage.getItem('nilakantha-viewer') || 'null');
-    if (saved && typeof saved.i === 'number') { state.i = Math.min(Math.max(saved.i,0), N-1); state.seen = saved.seen||state.i; state.show = Object.assign(state.show, saved.show||{}); }
+    if (saved && typeof saved.i === 'number') { state.i = Math.min(Math.max(saved.i,0), N-1); state.seen = saved.seen||state.i; state.show = Object.assign(state.show, saved.show||{}); state.full = !!saved.full; }
   } catch(e){}
   if (window.claude && window.claude.hot && window.claude.hot.data && typeof window.claude.hot.data.i === 'number') state = Object.assign(state, window.claude.hot.data);
   if (window.claude && window.claude.hot && window.claude.hot.snapshot) window.claude.hot.snapshot(function(){ return state; });
-  function persist(){ try { localStorage.setItem('nilakantha-viewer', JSON.stringify({i:state.i, seen:state.seen, show:state.show})); } catch(e){} }
+  function persist(){ try { localStorage.setItem('nilakantha-viewer', JSON.stringify({i:state.i, seen:state.seen, show:state.show, full:state.full})); } catch(e){} }
 
   // ---------- statistics ----------
   var isCJK = function(ch){ var c = ch.codePointAt(0); return (c>=0x3400&&c<=0x9FFF)||(c>=0x20000&&c<=0x2FFFF); };
@@ -238,8 +270,42 @@
     return (tens>1?d[tens]:'') + '十' + (ones?d[ones]:'');
   }
 
+  var fullList = document.getElementById('fullList'), fullEnd = document.getElementById('fullEnd'), fab = document.getElementById('fab');
+  function fullHTML(){
+    var h='';
+    for (var k=0;k<N;k++){
+      var l=L[k];
+      h += '<li data-k="' + k + '" class="' + (k===state.i && !state.done ? 'cur' : '') + '" tabindex="0" role="button" aria-label="Open phrase ' + (k+1) + '">' +
+        '<div class="eyebrow"><span class="num">第' + toZhNum(l.n) + '句</span><span class="ref">' + esc(l.ref.replace('T20n1060_p','20.1060.')) + '</span>' + (l.lit !== String(l.n) ? '<span class="ref">liturgical ' + esc(l.lit) + '</span>' : '') + '</div>' +
+        '<div class="zh-line" lang="zh-Hant">' + esc(l.zh) + (l.note_zh ? '<span class="g">(' + esc(l.note_zh) + ')</span>' : '') + '</div>' +
+        ((l.zh_lit && l.zh_lit.replace(/　/g,'') !== l.zh) ? '<div class="lit-line' + (state.show.lit?'':' lang-hidden') + '" lang="zh-Hant"><span class="k">As sung</span>' + markDiff(l.zh, l.zh_lit) + '</div>' : '') +
+        '<div class="sa-line' + (state.show.sa?'':' lang-hidden') + '" lang="sa-Latn">' + esc(l.sa) + '</div>' +
+        '<div class="en-line' + (state.show.en?'':' lang-hidden') + '" lang="en">' + esc(l.en) + '</div>' +
+        '<div class="gl-line' + (state.show.gl?'':' lang-hidden') + '" lang="zh-Hant">' + esc(l.zh_gloss) + '</div>' +
+        '</li>';
+    }
+    return h;
+  }
+  function paintFull(){
+    fullList.innerHTML = fullHTML();
+    fullEnd.textContent = N + ' phrases · ' + fmt(zhChars.length) + ' characters · Taishō ' + S.dharani_span;
+  }
+  function setFull(on){
+    state.full = !!on;
+    document.body.classList.toggle('mode-full', state.full);
+    fab.setAttribute('aria-pressed', String(state.full));
+    fab.setAttribute('aria-label', state.full ? 'Return to one phrase at a time' : 'Show the full text');
+    fab.title = state.full ? 'One phrase at a time' : 'Full text';
+    if (state.full){
+      paintFull();
+      var cur = fullList.querySelector('li.cur');
+      if (cur) cur.scrollIntoView({ block:'center', behavior: reduce ? 'auto' : 'smooth' });
+    }
+    persist();
+  }
   function paint(){
     card.innerHTML = state.done ? doneHTML() : lineHTML(L[state.i]);
+    if (state.full) paintFull();
     counter.innerHTML = state.done ? '<b>' + N + '</b> / ' + N : '<b>' + (state.i+1) + '</b> / ' + N;
     for (var k=0;k<N;k++){ ticks[k].className = state.done ? 'on' : (k<state.i ? 'on' : (k===state.i ? 'cur' : '')); }
     backBtn.disabled = state.i===0 && !state.done;
@@ -357,18 +423,29 @@
   scrim.addEventListener('click', closeDrawer);
 
   // ---------- input ----------
+  fab.addEventListener('click', function(e){ e.stopPropagation(); setFull(!state.full); });
+  fullList.addEventListener('click', function(e){
+    var li = e.target.closest('li[data-k]'); if (!li) return;
+    var k = +li.getAttribute('data-k');
+    state.done=false; state.i=k; state.seen=Math.max(state.seen,k);
+    setFull(false); paint(); persist();
+  });
+  fullList.addEventListener('keydown', function(e){ if ((e.key==='Enter'||e.key===' ') && e.target.matches('li[data-k]')){ e.preventDefault(); e.target.click(); } });
   var stage = document.getElementById('stage');
   stage.addEventListener('click', function(){ if (!document.body.classList.contains('open')) next(); });
   backBtn.addEventListener('click', function(e){ e.stopPropagation(); prev(); });
   document.addEventListener('keydown', function(e){
     if (e.key==='Escape'){ closeDrawer(); return; }
     if (document.body.classList.contains('open')) return;
+    if (e.key==='f' || e.key==='F'){ setFull(!state.full); return; }
+    if (state.full) return;
     if (e.key==='ArrowRight' || e.key==='ArrowDown' || e.key===' ' || e.key==='Enter'){ e.preventDefault(); next(); }
     else if (e.key==='ArrowLeft' || e.key==='ArrowUp' || e.key==='Backspace'){ e.preventDefault(); prev(); }
     else if (e.key==='m' || e.key==='M'){ openDrawer(); }
   });
 
   paint();
+  if (state.full) setFull(true);
 })();
 </script>
 <!--ARTIFACT-END-->

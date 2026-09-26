@@ -1,6 +1,6 @@
 # Great Compassion Mantra viewer
 
-A one-screen, tap-through reader for the 大悲咒 (Nīlakaṇṭha Dhāraṇī, T. 1060). Each tap fades to the next phrase, showing the Taishō Chinese, Lokesh Chandra's reconstructed Sanskrit, an English gloss and a Chinese gloss (釋義) together. The triple-line button opens a drawer with statistics (phrase, character and word counts, page counts for the whole sutra), display toggles, a jump grid and the source list.
+A one-screen, tap-through reader for the 大悲咒 (Nīlakaṇṭha Dhāraṇī, T. 1060). Each tap fades to the next phrase, showing the Taishō Chinese, Lokesh Chandra's reconstructed Sanskrit, an English gloss and a Chinese gloss (釋義) together. An icon-only button in the bottom-right corner switches to a scrollable full-text view of all 82 phrases and back; tapping a phrase there returns to the card view at that phrase. The triple-line button opens a drawer with statistics (phrase, character and word counts, page counts for the whole sutra), display toggles, a jump grid and the source list.
 
 ## Files
 

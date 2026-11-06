@@ -19,6 +19,10 @@ living Buddhist community.
 
 ## Contents
 
+- [`web/`](web/) — the site: one page with a drawer of curated texts. It has
+  the Great Compassion Mantra phrase reader and the six-syllable mantra from
+  *The Basket’s Display* as a repetition counter, with sourced notes and a
+  concepts panel fed by the reviewed knowledge export. Open `web/index.html`.
 - [`great-compassion-mantra/`](great-compassion-mantra/) — a tap-through,
   line-by-line reader for the 大悲咒 (Nīlakaṇṭha Dhāraṇī, Taishō T. 1060) with
   the Taishō Chinese, Lokesh Chandra's reconstructed Sanskrit and English side
@@ -44,6 +48,7 @@ Literature work starts with `literature/protocol.yaml`. Web work starts with
 ```bash
 make setup
 make checks
+make web      # rebuild the site after data or export changes
 ```
 
 To work concurrently, use a separate worktree and branch for each agent:

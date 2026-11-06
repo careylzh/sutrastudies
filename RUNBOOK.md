@@ -63,8 +63,19 @@ Claude owns the implementation under `web/`. Development fixtures must be
 stored under `web/fixtures/` and labeled synthetic. The app should read the
 reviewed export, not parse Markdown research files.
 
-When `web/` exists, Claude should add its setup, test, build, and accessibility
-commands here and connect them to a joint release check.
+Web commands (details in `web/README.md` and the "Web engineering" rules in
+`AGENTS.md`):
+
+```bash
+make web          # rebuild web/index.html from library.json, data and the export
+make web-checks   # build freshness, registry/provenance links, script syntax
+open web/index.html
+```
+
+`make checks` runs `web-checks`, so a change to `knowledge/exports/mindmap.json`
+also needs `make web` before it validates. To add a text: register its source
+(literature workstream), add a `web/library.json` entry and data file, run
+`make web`, and inspect the rendered page.
 
 ## Handover
 

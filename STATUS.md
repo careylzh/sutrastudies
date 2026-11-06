@@ -1,6 +1,6 @@
 # Status
 
-Date: 2026-08-31
+Date: 2026-11-06
 
 ## Current state
 
@@ -18,6 +18,18 @@ content.
 
 ## Latest completed task
 
+- Merged the literature scaffold into the main line alongside the Great
+  Compassion Mantra viewer (PR #1).
+- Added `web/`: one library-driven app (D-005) with a drawer of curated texts.
+  It offers the Nīlakaṇṭha Dhāraṇī (phrase reader) and the six-syllable mantra
+  from *The Basket’s Display* (repetition counter, with paraphrased notes
+  located in the 84000 translation). The concepts panel reads only reviewed
+  entries from the export and currently shows an honest empty state.
+- Added web engineering rules to `AGENTS.md`, web commands to `RUNBOOK.md`,
+  and `make web` / `make web-checks` (included in `make checks`).
+
+## Earlier completed task
+
 - Added durable project, agent, status, task, decision, claim, and runbook files.
 - Added a literature-review protocol, search log, source inventory, appraisal
   template, and evidence matrix.
@@ -34,17 +46,21 @@ content.
   decision before substantive searching.
 - The JSON validator checks structural and referential invariants but does not
   replace scholarly review.
-- The web app has not yet been created or tested.
+- The web app has no reviewed concepts to show yet; phrase-mode statistics
+  assume the T. 1060 data shape.
+- T. 1060 sources are not yet registered in the source inventory.
 
 ## Next three actions
 
 1. Decide and record first-release tradition, canon, language, and source
-   boundaries.
-2. Freeze the starter review protocol and run documented discovery searches.
-3. Have Claude scaffold `web/` against the empty reviewed export and schema.
+   boundaries, then freeze the starter review protocol.
+2. Appraise S001 (*The Basket’s Display*) and publish its first reviewed
+   concepts so the mantra entry's concepts panel has real content.
+3. Register the T. 1060 sources (Codex) and give the dhāraṇī library entry
+   their source IDs (Claude).
 
 ## Last validated state
 
-- Branch: `agent/literature-scaffold`
-- Validation: `make checks`
-- Commit: `5da8ede` (`Initialize literature workflow and add The Basket's Display`)
+- Branch: `agent/web-app` (fast-forwarded into `main`)
+- Validation: `make checks` (repository validator and web checks)
+- Commit: see `git log -1` on `main`

@@ -53,6 +53,29 @@ not silently rewrite an accepted decision; add a superseding entry.
 - Consequences: `PROJECT.md` lists candidate clusters only; inclusion awaits a
   frozen protocol and source review.
 
+## D-005 — A single library-driven web app with per-text modes
+
+- Date: 2026-11-06
+- Status: accepted
+- Decision: The site is one page (`web/index.html`) that reads a curated
+  registry (`web/library.json`). Each text declares a `mode` (`phrases` for a
+  tap-through reader, `mantra` for a repetition counter) and a data file. The
+  drawer lists the texts and shows located notes and reviewed concepts for the
+  selected one. The Great Compassion Mantra data stays in
+  `great-compassion-mantra/` and is reused in place, and that standalone viewer
+  is kept.
+- Evidence and alternatives: Separate per-text pages would duplicate the
+  reader and drift apart. A generic "lines" model for every text would force a
+  163-page prose translation into recitation lines, which suits neither the
+  text nor its CC BY-NC-ND license. From *The Basket’s Display* (S001) the app
+  therefore offers only the six-syllable mantra (¶2.57, ¶2.76) with
+  paraphrased, located notes.
+- Consequences: Adding a text is a data change. New behaviour needs a new mode
+  and a documented contract. Concept panels stay empty until reviewed concepts
+  that cite the text's source IDs appear in the export. `make checks` now
+  includes `make web-checks`, so export changes require `make web`.
+- Supersedes: none
+
 ## Decision template
 
 ### D-XXX — Short title

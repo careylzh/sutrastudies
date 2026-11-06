@@ -73,6 +73,42 @@ the repository as durable project memory rather than relying on chat context.
 - Claude may create fixtures for UI development, but fixtures must be visibly
   labeled synthetic and must not be merged into the reviewed export.
 
+## Web engineering
+
+These rules guide every feature added to the site under `web/`.
+
+- **One app, data-driven.** New texts are added as entries in
+  `web/library.json` plus a data file, not as new pages or hard-coded branches.
+  A text that needs new behaviour gets a new `mode` with a documented data
+  contract in `web/README.md`. Changing a contract requires a decision-log entry.
+- **Content enters through data, never through template prose.** Text,
+  glosses, notes and concept summaries live in JSON with provenance fields.
+  Template copy is limited to interface language and caveats about the
+  material's nature (for example, that a gloss is interpretive).
+- **Concepts come only from the reviewed export.** The app shows concept
+  summaries solely from `knowledge/exports/mindmap.json` entries with
+  `review_status: reviewed`. When none exist it shows an honest empty state;
+  it never fills the gap with agent-written summaries.
+- **Notes are located paraphrase.** Each per-text note names its kind (sūtra
+  text, translator's apparatus, translation alternative, publisher summary) and
+  an exact locator. Contested readings are marked as such. Texts under
+  no-derivatives licenses are cited and paraphrased, not adapted.
+- **Practice framing.** Recitation features count or pace; they do not promise
+  outcomes. A benefit that a text claims is reported as the text's teaching.
+- **Self-contained output.** `web/index.html` must open from the filesystem
+  with no build step, account or server. Third-party code loads only from a
+  pinned, versioned CDN URL, and state stays in `localStorage` with try/catch.
+- **Accessible by default.** Keep keyboard paths, visible focus, `lang`
+  attributes on every non-English string, reduced-motion support, light and
+  dark themes, and usable layouts at 375 px width.
+- **Validate and rebuild.** `web/build.py` rejects malformed entries, unknown
+  source IDs, and synthetic data. Run `make web` after changing library data
+  or the knowledge export, and `make checks` before committing. Add a test for
+  every new invariant.
+- **Verify visually.** Before handover, render each changed mode (e.g. with
+  headless Chrome) and inspect it; passing tests alone do not show that a
+  feature works.
+
 ## Validation and handover
 
 Before ending a completed session:

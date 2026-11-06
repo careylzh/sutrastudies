@@ -9,7 +9,9 @@ Status values: `todo`, `in progress`, `blocked`, `done`, or
 |---|---|---|---|---|
 | Establish agentic repository scaffold | done | Codex | Reference repository | Control files, workstream boundaries, literature workspace, schema, and checks exist |
 | Establish safe concurrent-agent workflow | done | Codex/Claude | Git | Separate worktrees and branches; ownership documented; shared-file edits coordinated |
-| Scaffold web application | todo | Claude | Knowledge schema | Accessible HTML/JS app under `web/` loads the empty/reviewed export and passes its tests |
+| Scaffold web application | done | Claude | Knowledge schema | Accessible HTML/JS app under `web/` loads the empty/reviewed export and passes its tests |
+| Curated sutra library in the web app | done with limitation | Claude | Scaffold | Drawer lists texts; dhāraṇī reader and six-syllable mantra counter; concepts panel reads reviewed export (currently empty) |
+| Register T. 1060 sources in the inventory | todo | Codex | Source inventory | Taishō T. 1060, Chandra reconstruction and recitation text have source IDs so the dhāraṇī entry can link concepts |
 
 ## Literature review
 
@@ -28,5 +30,5 @@ Status values: `todo`, `in progress`, `blocked`, `done`, or
 |---|---|---|---|---|
 | Define mind-map interchange schema | done with limitation | Codex/Claude | Initial product boundary | Versioned schema covers concepts, typed edges, provenance, traditions, and review state; Claude review pending |
 | Publish first reviewed concept cluster | todo | Codex | Claims ledger | Export validates; every concept and edge is source-backed; draft material is excluded |
-| Integrate reviewed export in app | todo | Claude | First reviewed export | UI renders supported fields and visibly handles uncertainty, traditions, and unavailable detail |
+| Integrate reviewed export in app | in progress | Claude | First reviewed export | UI renders supported fields and visibly handles uncertainty, traditions, and unavailable detail |
 | Add joint release check | todo | Codex/Claude | App tests and reviewed content | One command validates research data, app tests, accessibility checks, and broken references |

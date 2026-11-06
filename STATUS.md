@@ -25,6 +25,8 @@ content.
   from *The Basket’s Display* (repetition counter, with paraphrased notes
   located in the 84000 translation). The concepts panel reads only reviewed
   entries from the export and currently shows an honest empty state.
+- Deployed the site to GitHub Pages (https://careylzh.github.io/sutrastudies/) through a GitHub Actions
+  workflow that runs `make checks` before publishing.
 - Added web engineering rules to `AGENTS.md`, web commands to `RUNBOOK.md`,
   and `make web` / `make web-checks` (included in `make checks`).
 

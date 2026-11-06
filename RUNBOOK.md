@@ -72,6 +72,11 @@ make web-checks   # build freshness, registry/provenance links, script syntax
 open web/index.html
 ```
 
+Deployment: every push to `main` runs `.github/workflows/pages.yml`. It runs
+`make checks` and publishes only the built `web/index.html` to GitHub Pages at
+https://careylzh.github.io/sutrastudies/. A failing check blocks the deploy. Commit the rebuilt `web/index.html`,
+because CI checks that it is fresh and does not rebuild it.
+
 `make checks` runs `web-checks`, so a change to `knowledge/exports/mindmap.json`
 also needs `make web` before it validates. To add a text: register its source
 (literature workstream), add a `web/library.json` entry and data file, run

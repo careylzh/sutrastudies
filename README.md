@@ -19,6 +19,8 @@ living Buddhist community.
 
 ## Contents
 
+Live site: https://careylzh.github.io/sutrastudies/
+
 - [`web/`](web/) — the site: one page with a drawer of curated texts. It has
   the Great Compassion Mantra phrase reader and the six-syllable mantra from
   *The Basket’s Display* as a repetition counter, with sourced notes and a

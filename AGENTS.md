@@ -98,16 +98,19 @@ These rules guide every feature added to the site under `web/`.
 - **Self-contained output.** `web/index.html` must open from the filesystem
   with no build step, account or server. Third-party code loads only from a
   pinned, versioned CDN URL, and state stays in `localStorage` with try/catch.
-- **Accessible by default.** Keep keyboard paths, visible focus, `lang`
-  attributes on every non-English string, reduced-motion support, light and
-  dark themes, and usable layouts at 375 px width.
+- **Accessible and responsive by default.** Keep keyboard paths, visible
+  focus, `lang` attributes on every non-English string, reduced-motion
+  support, and light and dark themes. Every feature must work on phones
+  (375 px, notch-safe), tablets (portrait and landscape), and desktop, where
+  the drawer docks beside the text from 1100 px. Hints follow the input type
+  (tap or click/keys).
 - **Validate and rebuild.** `web/build.py` rejects malformed entries, unknown
   source IDs, and synthetic data. Run `make web` after changing library data
   or the knowledge export, and `make checks` before committing. Add a test for
   every new invariant.
-- **Verify visually.** Before handover, render each changed mode (e.g. with
-  headless Chrome) and inspect it; passing tests alone do not show that a
-  feature works.
+- **Verify visually.** Before handover, run `python3 web/tests/screenshots.py`
+  and inspect every device and state it renders. Passing tests alone do not
+  show that a feature works.
 
 ## Validation and handover
 

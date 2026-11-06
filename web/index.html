@@ -186,6 +186,37 @@
   body.mode-mantra .track,body.mode-mantra .fab{display:none}
   body.mode-mantra .foot{padding-right:0}
   @media (prefers-reduced-motion: reduce){ .card.pulse .tally{animation:none} }
+
+  /* ---------- responsive layer ---------- */
+  /* phones: dynamic viewport height, notch-safe bars, short subtitle */
+  .app{height:100vh;height:100dvh}
+  .bar{padding-top:max(14px, env(safe-area-inset-top,0px))}
+  .foot{padding-bottom:max(16px, env(safe-area-inset-bottom,0px))}
+  .app{padding-left:max(16px, env(safe-area-inset-left,0px));padding-right:max(16px, env(safe-area-inset-right,0px))}
+  @media (max-width:520px){ .bar-title .sub{display:none} }
+  /* closed drawer: no bleeding shadow, not reachable by keyboard */
+  .drawer{visibility:hidden;transition:transform .32s cubic-bezier(.2,.7,.2,1), visibility 0s linear .32s}
+  body.open .drawer{visibility:visible;transition:transform .32s cubic-bezier(.2,.7,.2,1), visibility 0s}
+  /* tablets and up: larger reading type */
+  @media (min-width:768px) and (min-height:600px){
+    .card{max-width:760px}
+    .zh-line{font-size:clamp(40px,6.4vw,64px)}
+    .sa-line{font-size:clamp(26px,3.4vw,34px)}
+    .en-line{font-size:clamp(19px,2.4vw,24px)}
+    .gl-line{font-size:17px}
+    .mantra-line{font-size:clamp(52px,7vw,76px)}
+    .full ol{max-width:760px}
+    .foot{max-width:980px;width:100%;margin-inline:auto}
+  }
+  /* desktop: the drawer docks beside the text instead of covering it */
+  @media (min-width:1100px){
+    .app{transition:padding-left .32s cubic-bezier(.2,.7,.2,1)}
+    body.open .app{padding-left:416px}
+    body.open .scrim{opacity:0;pointer-events:none}
+    .drawer{box-shadow:none;border-right:1px solid var(--hair)}
+    body.open .drawer{box-shadow:none}
+  }
+  @media (min-width:1100px) and (prefers-reduced-motion: reduce){ .app{transition:none} }
 </style>
 </head>
 <body>
@@ -258,6 +289,10 @@
   var card=$('card'), counter=$('counter'), track=$('track'), backBtn=$('backBtn'), hint=$('hint'), stage=$('stage');
   var fullList=$('fullList'), fullEnd=$('fullEnd'), fab=$('fab'), dbody=$('dbody');
   var menuBtn=$('menuBtn'), drawer=$('drawer'), scrim=$('scrim');
+  var dockMQ = matchMedia('(min-width:1100px)'), fineMQ = matchMedia('(hover:hover) and (pointer:fine)');
+  function docked(){ return dockMQ.matches; }
+  function isOpen(){ return document.body.classList.contains('open'); }
+  function blocking(){ return isOpen() && !docked(); }
 
   // ---------- shared helpers ----------
   var isCJK = function(ch){ var c = ch.codePointAt(0); return (c>=0x3400&&c<=0x9FFF)||(c>=0x20000&&c<=0x2FFFF); };
@@ -351,7 +386,8 @@
       for (var k=0;k<N;k++) t[k].className = s.done ? 'on' : (k<s.i ? 'on' : (k===s.i ? 'cur' : ''));
       backBtn.disabled = s.i===0 && !s.done;
       backBtn.setAttribute('aria-label','Previous line');
-      hint.textContent = s.done ? 'Tap to start over' : (s.i===N-1 ? 'Tap to finish' : 'Tap to continue');
+      var v = fineMQ.matches ? 'Click or press →' : 'Tap';
+      hint.textContent = s.done ? v + ' to start over' : (s.i===N-1 ? v + ' to finish' : v + ' to continue');
       stage.setAttribute('aria-label','Tap to advance to the next line');
       if (s.full) this.paintFull();
     },
@@ -434,7 +470,7 @@
       counter.innerHTML = '<b>' + fmt(s.count||0) + '</b>';
       backBtn.disabled = !(s.count > 0);
       backBtn.setAttribute('aria-label','Undo last count');
-      hint.textContent = 'Tap to count';
+      hint.textContent = fineMQ.matches ? 'Click or press space to count' : 'Tap to count';
       stage.setAttribute('aria-label','Tap to count one repetition');
     },
     next: function(){ var s=ts(); s.count=(s.count||0)+1; },
@@ -490,11 +526,11 @@
   dbody.addEventListener('click', function(e){
     var b = e.target.closest('button'); if (!b) return;
     var s = ts();
-    if (b.hasAttribute('data-text')){ var id=b.getAttribute('data-text'); closeDrawer(); if (id!==entry.id) selectText(id, true); return; }
-    if (b.hasAttribute('data-j')){ var j=+b.getAttribute('data-j'); closeDrawer(); transition(function(){ s.done=false; s.i=j; s.seen=Math.max(s.seen,j); }); return; }
+    if (b.hasAttribute('data-text')){ var id=b.getAttribute('data-text'); closeModal(); if (id!==entry.id) selectText(id, true); return; }
+    if (b.hasAttribute('data-j')){ var j=+b.getAttribute('data-j'); closeModal(); transition(function(){ s.done=false; s.i=j; s.seen=Math.max(s.seen,j); }); return; }
     var act = b.getAttribute('data-act');
-    if (act==='restart'){ closeDrawer(); transition(function(){ s.done=false; s.i=0; }); }
-    else if (act==='last'){ closeDrawer(); transition(function(){ s.done=false; s.i=Phrases.N-1; s.seen=Phrases.N-1; }); }
+    if (act==='restart'){ closeModal(); transition(function(){ s.done=false; s.i=0; }); }
+    else if (act==='last'){ closeModal(); transition(function(){ s.done=false; s.i=Phrases.N-1; s.seen=Phrases.N-1; }); }
     else if (act==='reset'){ s.count=0; persist(); paint(); }
   });
   dbody.addEventListener('change', function(e){
@@ -506,7 +542,7 @@
   function paint(){
     card.innerHTML = mode.card();
     mode.paint();
-    if (document.body.classList.contains('open')) renderDrawer();
+    if (isOpen()) renderDrawer();
   }
   var busy=false;
   function transition(update){
@@ -547,7 +583,7 @@
       document.body.classList.toggle('mode-mantra', entry.mode === 'mantra');
       var bz = $('barZh'); bz.textContent = entry.title_native; bz.lang = entry.native_lang;
       bz.style.fontFamily = entry.native_lang === 'sa-Latn' ? 'var(--sa)' : '';
-      $('barSa').textContent = entry.title_en + ' · ' + entry.subtitle;
+      $('barSa').innerHTML = esc(entry.title_en) + '<span class="sub"> · ' + esc(entry.subtitle) + '</span>';
       document.title = entry.title_en + ' · Sutra Studies';
     };
     if (animate && !reduce){ transition(function(){ apply(); }); setTimeout(function(){ setFull(ts().full); }, 260); }
@@ -555,9 +591,25 @@
   }
 
   // ---------- drawer open/close ----------
-  function openDrawer(){ renderDrawer(); document.body.classList.add('open'); drawer.setAttribute('aria-hidden','false'); menuBtn.setAttribute('aria-expanded','true'); $('closeBtn').focus(); }
-  function closeDrawer(){ if (!document.body.classList.contains('open')) return; document.body.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false'); menuBtn.focus(); }
-  menuBtn.addEventListener('click', function(e){ e.stopPropagation(); document.body.classList.contains('open') ? closeDrawer() : openDrawer(); });
+  function syncRole(){
+    if (docked()){ drawer.setAttribute('role','complementary'); drawer.removeAttribute('aria-modal'); }
+    else { drawer.setAttribute('role','dialog'); drawer.setAttribute('aria-modal','true'); }
+  }
+  function openDrawer(focus){
+    syncRole(); renderDrawer(); document.body.classList.add('open'); drawer.setAttribute('aria-hidden','false'); menuBtn.setAttribute('aria-expanded','true');
+    if (docked()){ store.docked = true; persist(); }
+    if (focus !== false) $('closeBtn').focus();
+  }
+  function closeDrawer(){
+    if (!isOpen()) return;
+    document.body.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); menuBtn.setAttribute('aria-expanded','false');
+    if (docked()){ store.docked = false; persist(); }
+    menuBtn.focus();
+  }
+  function closeModal(){ if (!docked()) closeDrawer(); }
+  dockMQ.addEventListener('change', syncRole);
+  fineMQ.addEventListener('change', function(){ mode.paint(); });
+  menuBtn.addEventListener('click', function(e){ e.stopPropagation(); isOpen() ? closeDrawer() : openDrawer(); });
   $('closeBtn').addEventListener('click', closeDrawer);
   scrim.addEventListener('click', closeDrawer);
 
@@ -570,11 +622,12 @@
     setFull(false); paint(); persist();
   });
   fullList.addEventListener('keydown', function(e){ if ((e.key==='Enter'||e.key===' ') && e.target.matches('li[data-k]')){ e.preventDefault(); e.target.click(); } });
-  stage.addEventListener('click', function(){ if (!document.body.classList.contains('open')) advance(); });
+  stage.addEventListener('click', function(){ if (!blocking()) advance(); });
   backBtn.addEventListener('click', function(e){ e.stopPropagation(); back(); });
   document.addEventListener('keydown', function(e){
     if (e.key==='Escape'){ closeDrawer(); return; }
-    if (document.body.classList.contains('open')) return;
+    if (blocking()) return;
+    if (e.target.closest && e.target.closest('#drawer')) return;
     if (e.target.closest && e.target.closest('button:not(#stage), input, summary')) { if (e.key===' '||e.key==='Enter') return; }
     if ((e.key==='f' || e.key==='F') && entry.mode==='phrases'){ setFull(!ts().full); return; }
     if (e.key==='m' || e.key==='M'){ openDrawer(); return; }
@@ -584,6 +637,7 @@
   });
 
   selectText(store.current, false);
+  if (docked() && store.docked) openDrawer(false);
 })();
 </script>
 <!--ARTIFACT-END-->

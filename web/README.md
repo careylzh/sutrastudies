@@ -49,4 +49,14 @@ browser; no server or install is needed.
 ```sh
 make web          # rebuild web/index.html
 make web-checks   # build freshness, registry/provenance links, script syntax
+python3 web/tests/screenshots.py   # phone / tablet / desktop renders to inspect
 ```
+
+## Responsive behaviour
+
+- **Phone:** full-height card, notch-safe bars, the drawer opens as a modal
+  sheet, and the subtitle is shortened.
+- **Tablet (≥768 px):** larger reading type and a centred progress bar.
+- **Desktop (≥1100 px):** the drawer docks beside the text, so reading and
+  tapping continue while it is open, and its open state is remembered. Hints
+  read "Click or press →" on mouse devices.

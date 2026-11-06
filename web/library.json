@@ -1,0 +1,28 @@
+{
+  "library_version": 1,
+  "note": "Curated texts shown in the web app's library drawer. Order here is display order. See web/README.md for the entry contract.",
+  "texts": [
+    {
+      "id": "nilakantha-dharani",
+      "mode": "phrases",
+      "data": "../great-compassion-mantra/data/nilakantha-T1060.json",
+      "title_native": "大悲心陀羅尼",
+      "native_lang": "zh-Hant",
+      "title_en": "Great Compassion Mantra",
+      "subtitle": "Nīlakaṇṭha Dhāraṇī · T. 1060",
+      "tradition": "Chinese Buddhist canon (Taishō)",
+      "source_ids": []
+    },
+    {
+      "id": "karandavyuha-six-syllable",
+      "mode": "mantra",
+      "data": "data/karandavyuha-six-syllable.json",
+      "title_native": "Oṁ maṇipadme hūṁ",
+      "native_lang": "sa-Latn",
+      "title_en": "Six-Syllable Mantra",
+      "subtitle": "from The Basket’s Display · Toh 116",
+      "tradition": "Tibetan Kangyur (Degé), in English translation",
+      "source_ids": ["S001"]
+    }
+  ]
+}

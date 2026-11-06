@@ -1,0 +1,47 @@
+{
+  "synthetic": false,
+  "mantra": {
+    "text": "Oṁ maṇipadme hūṁ",
+    "lang": "sa-Latn",
+    "as_given": "As printed in the 84000 translation at ¶2.57 and ¶2.76."
+  },
+  "text": {
+    "title_en": "The Noble Mahāyāna Sūtra “The Basket’s Display”",
+    "title_sa": "Kāraṇḍavyūha",
+    "canonical_id": "Toh 116",
+    "canon": "Degé Kangyur, vol. 51 (mdo sde, pa), folios 200.a–247.b",
+    "translators": "Peter Alan Roberts with Tulku Yeshi (English); Jinamitra, Dānaśīla and Yeshé Dé (Tibetan)",
+    "publisher": "84000: Translating the Words of the Buddha",
+    "version": "v2.47.38 (2025)",
+    "url": "https://84000.co/translation/toh116",
+    "license": "CC BY-NC-ND 3.0"
+  },
+  "notes": [
+    {
+      "kind": "84000 summary",
+      "locator": "s.1",
+      "text": "A sūtra told as narratives within narratives about Avalokiteśvara’s activity in many realms, including the realms within the pores of his skin. It closes on how rare his mantra is: on the Buddha’s instruction, the bodhisattva Sarvanīvaraṇaviṣkambhin obtains it from a man in Vārāṇasī who has broken his monastic vows."
+    },
+    {
+      "kind": "Sūtra text",
+      "locator": "¶2.57, ¶2.76",
+      "text": "The mantra itself appears twice: Avalokiteśvara gives it to the Tathāgata Padmottama (¶2.57), and later it is given to Sarvanīvaraṇaviṣkambhin, who receives it with palms joined (¶2.76)."
+    },
+    {
+      "kind": "Sūtra text",
+      "locator": "¶2.38, ¶2.43–2.49",
+      "text": "The sūtra praises the merit of repeating the mantra as beyond calculation. That is the text’s own teaching, given here as what it says, not as a promised effect of reciting."
+    },
+    {
+      "kind": "Translator’s introduction",
+      "locator": "i.19",
+      "text": "The sūtra explains neither the mantra as a whole nor its individual syllables. Syllable-by-syllable explanations became widespread later in Tibetan Buddhism, and the meaning has been understood in various ways."
+    },
+    {
+      "kind": "Translation alternatives",
+      "locator": "i.21; glossary g.139",
+      "text": "Reading padme as a locative gives the familiar “jewel in the lotus.” The translator argues that padme is a Buddhist Hybrid Sanskrit vocative, making Maṇipadma (“Jewel Lotus”) a name by which Avalokiteśvara is invoked. This is the translator’s argument, not a settled consensus."
+    }
+  ],
+  "attribution": "Mantra wording and locators from The Basket’s Display (Toh 116), translated by Peter Alan Roberts with Tulku Yeshi, 84000: Translating the Words of the Buddha, v2.47.38 (2025), licensed CC BY-NC-ND 3.0. Notes are this app’s paraphrases; read the translation itself at 84000.co/translation/toh116."
+}

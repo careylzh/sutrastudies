@@ -1,0 +1,13 @@
+.DS_Store
+.venv/
+.private/
+__pycache__/
+*.py[cod]
+node_modules/
+web/dist/
+web/coverage/
+
+# Retain legally obtained local full texts only when repository policy permits.
+literature/papers/*
+!literature/papers/.gitkeep
+!literature/papers/README.md

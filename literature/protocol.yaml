@@ -1,0 +1,56 @@
+protocol_version: 0.1.0
+status: draft
+created: 2026-08-31
+review_type: bounded
+mode: paper
+question: >-
+  What concepts and relationships are necessary for a beginner to understand
+  how major Buddhist traditions describe suffering, its causes, its cessation,
+  and paths of practice, and where do primary texts and responsible scholarship
+  show shared ground, divergent interpretation, or translation difficulty?
+purpose: description_and_comparison
+audience: interested beginners and returning learners
+population_or_context: foundational Buddhist learning outside a single lineage
+phenomenon_or_intervention: Buddhist concepts, practices, and their relationships
+comparator: interpretations across texts, translations, periods, and traditions
+outcomes_or_concepts:
+  - definitions and source-language terms
+  - relationships among concepts
+  - tradition-specific interpretation
+  - translation ambiguity
+  - practical and ethical framing
+eligible_designs_or_source_types:
+  - primary Buddhist texts in reputable editions or translations
+  - critical editions and text-historical scholarship
+  - peer-reviewed Buddhist studies scholarship
+  - reference works with transparent editorial authority
+  - modern lineage sources for explicitly tradition-specific interpretation
+date_range: open; record historical date uncertainty rather than invent precision
+languages:
+  - English scholarship and translations for initial screening
+  - Pali, Sanskrit, Chinese, and Tibetan terms where verified by appropriate sources
+inclusion_criteria:
+  - direct relevance to a candidate concept or graph relationship
+  - verifiable bibliographic or textual identity
+  - access sufficient to support the specific extracted claim
+  - explicit tradition and textual context where relevant
+exclusion_criteria:
+  - unattributed quotations or quote-aggregation pages
+  - content-farm, marketing, or SEO summaries
+  - claims available only through an unverified secondary quotation
+  - universal claims inferred from a single school, teacher, text, or translation
+  - clinical or therapeutic claims without fit-for-purpose empirical evidence
+search_locations: []
+synthesis_method: narrative framework synthesis with evidence mapping
+planned_subgroups_or_contrasts:
+  - early Buddhist and Theravada sources
+  - Mahayana sources and schools
+  - Vajrayana sources and schools
+  - premodern textual interpretation versus modern application
+  - alternative translations of pivotal terms
+deviations: []
+unresolved_before_screening:
+  - first-release traditions and canons
+  - quotation and translation licensing policy
+  - whether empirical contemplative-science evidence is in scope
+  - whether the final review remains bounded or becomes systematic

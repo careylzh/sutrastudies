@@ -1,0 +1,15 @@
+{
+  "_comment": "region: sg or world. curated: true means the outlet only publishes constructive/positive stories, so items skip the positivity keyword check (the negative-word filter still applies).",
+  "feeds": [
+    {"name": "Good News Network", "url": "https://www.goodnewsnetwork.org/feed/", "region": "world", "curated": true},
+    {"name": "Positive News", "url": "https://www.positive.news/feed/", "region": "world", "curated": true},
+    {"name": "Reasons to be Cheerful", "url": "https://reasonstobecheerful.world/feed/", "region": "world", "curated": true},
+    {"name": "The Optimist Daily", "url": "https://www.optimistdaily.com/feed/", "region": "world", "curated": true},
+    {"name": "ScienceDaily", "url": "https://www.sciencedaily.com/rss/top/science.xml", "region": "world", "curated": false},
+    {"name": "CNA Singapore", "url": "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=10416", "region": "sg", "curated": false},
+    {"name": "The Straits Times Singapore", "url": "https://www.straitstimes.com/news/singapore/rss.xml", "region": "sg", "curated": false},
+    {"name": "Mothership", "url": "https://mothership.sg/feed/", "region": "sg", "curated": false},
+    {"name": "Google News: Singapore good news", "url": "https://news.google.com/rss/search?q=Singapore+(breakthrough+OR+volunteers+OR+donates+OR+award+OR+%22first+in+the+world%22+OR+heartwarming)+when:2d&hl=en-SG&gl=SG&ceid=SG:en", "region": "sg", "curated": false},
+    {"name": "Google News: Singapore science", "url": "https://news.google.com/rss/search?q=Singapore+(NUS+OR+NTU+OR+A*STAR)+(researchers+OR+scientists)+when:3d&hl=en-SG&gl=SG&ceid=SG:en", "region": "sg", "curated": false}
+  ]
+}

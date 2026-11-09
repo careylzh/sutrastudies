@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- SYNTHETIC test fixture: invented headlines, not real news. -->
+<rss version="2.0"><channel><title>Fixture</title>
+<item><title>Volunteers plant 1,000 trees along new park connector</title><link>https://example.test/a</link><pubDate>Mon, 09 Nov 2026 01:00:00 +0000</pubDate></item>
+<item><title>Two injured in expressway crash</title><link>https://example.test/b</link><pubDate>Mon, 09 Nov 2026 02:00:00 +0000</pubDate></item>
+<item><title>Ministry updates bus timetable</title><link>https://example.test/c</link><pubDate>Mon, 09 Nov 2026 03:00:00 +0000</pubDate></item>
+<item><title>Researchers develop low-cost water filter</title><link>https://example.test/d</link><pubDate>Fri, 01 Nov 2026 03:00:00 +0000</pubDate></item>
+</channel></rss>

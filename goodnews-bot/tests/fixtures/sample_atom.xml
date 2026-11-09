@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYNTHETIC test fixture: invented headlines, not real news. -->
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Fixture</title>
+<entry><title>Coral reef bounces back after restoration project</title><link rel="alternate" href="https://example.test/e"/><updated>2026-11-08T22:00:00Z</updated></entry>
+</feed>

@@ -1,0 +1,54 @@
+name: Good news digest
+
+on:
+  schedule:
+    # 23:13 UTC = 07:13 Singapore time, every day
+    - cron: "13 23 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print the digest in the log instead of sending it"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: goodnews
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test
+        run: python -m unittest discover -s goodnews-bot/tests
+      # Remembers which stories were already sent so nothing repeats.
+      - name: Restore sent-story memory
+        uses: actions/cache/restore@v4
+        with:
+          path: goodnews-bot/sent.json
+          key: goodnews-sent-${{ github.run_id }}
+          restore-keys: goodnews-sent-
+      - name: Build and send digest
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            python goodnews-bot/goodnews.py --dry-run
+          else
+            python goodnews-bot/goodnews.py --state goodnews-bot/sent.json
+          fi
+      - name: Save sent-story memory
+        if: success() && inputs.dry_run != true
+        uses: actions/cache/save@v4
+        with:
+          path: goodnews-bot/sent.json
+          key: goodnews-sent-${{ github.run_id }}

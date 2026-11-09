@@ -16,6 +16,13 @@ user. The evidence matrix, claims ledger, and reviewed mind-map export remain
 empty. Candidate concepts in `PROJECT.md` are scoping prompts, not verified
 content.
 
+## Side project: good news bot
+
+`goodnews-bot/` is a daily Telegram digest of hopeful Singapore and world
+news, sent by `.github/workflows/goodnews.yml`. It is unrelated to the sutra
+work and touches no research or web files. It needs the `TELEGRAM_BOT_TOKEN`
+and `TELEGRAM_CHAT_ID` repository secrets and runs only from `main`.
+
 ## Latest completed task
 
 - Merged the literature scaffold into the main line alongside the Great

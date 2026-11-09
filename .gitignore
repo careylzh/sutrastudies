@@ -11,3 +11,6 @@ web/coverage/
 literature/papers/*
 !literature/papers/.gitkeep
 !literature/papers/README.md
+
+# Good news bot runtime state
+goodnews-bot/sent.json
